@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JSON to Table</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			setInterval(function() {
+				$.getJSON("http://192.168.1.145:5000/vt", function(data) {
+					var table = $("<table>");
+					var headerRow = $("<tr>");
+					headerRow.append($("<th>").text("Time"));
+					headerRow.append($("<th>").text("Log"));
+					headerRow.append($("<th>").text("Stress_Lv"));
+					table.append(headerRow);
+					$.each(data, function(index, item) {
+						var row = $("<tr>");
+						row.append($("<td>").text(item.time));
+						row.append($("<td>").text(JSON.stringify(item.data)));
+						row.append($("<td>").text(item.stress_level));
+						table.append(row);
+					});
+					$("#data-table").html(table);
+				});
+			}, 2000);
+		});
+	</script>
+</head>
+<body>
+	<div id="data-table"></div>
+</body>
+</html>
+

@@ -1,0 +1,1784 @@
+<!doctype html>
+
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/xls/0.7.5/xls.core.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/xls/0.7.5/xls.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.core.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/jszip.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="https://d3js.org/d3.v6.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1"></script>
+
+    
+  </head>
+  
+  <body>
+    <header>
+      <div class="navbar">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('singleAnalysis') }}">Single Analysis</a>
+        <a class="active" href="{{ url_for('multiAnalysis') }}">Multi Analysis</a>
+        <a href="{{ url_for('about') }}">About</a>
+      </div>
+  
+      <div>
+        <h2 style="
+          height: 50px;
+          line-height: 50px;
+          text-align: center;
+          background-color: rgb(214, 214, 214);
+          height: 50px;
+          margin-top:0px;
+         ">
+          Multi Analysis
+        </h2>
+      </div>
+    </header>
+  
+    
+    <form style="margin-top: 70px; margin-bottom: 50px;" action="/submit_multi_analysis" method="POST" id="multi-analysis-form">
+      <div id="player-dates-container">
+          <div class="player-date">
+              <label for="player-name" style="margin-right: 10px;">Player Name:</label>
+              <select class="js-example-basic-multiple" style="width: 30%; margin-right: 15px; height: 25px;" name="player-name[]">
+                  <option value="" selected="selected">Select player's name...</option>
+              </select>
+              <label style="margin-right: 10px; " for="date">Choose Date (yyyy-mm-dd): </label>
+              <select name="date[]" style="width: 10%; height: 25px;"></select>
+              <input style="background-color: rgb(209, 96, 96); color: rgb(84, 0, 0); font-size: medium; margin-left: 10px;" type="button" value="-" onclick="removePlayerDateForm(this)">
+          </div>
+      </div>
+  
+      <div style="margin-top: 30px;">
+          <input type="button" value="Add" onclick="addPlayerDateForm()">
+          <input type="button" value="Analyze" onclick="multiAnalysis()">
+      </div>
+  </form>
+  
+  <script>
+      // Function to add a new player name and date form
+      function addPlayerDateForm() {
+          const container = document.getElementById('player-dates-container');
+          const firstForm = container.querySelector('.player-date');
+          const newForm = document.createElement('div');
+          newForm.classList.add('player-date');
+          newForm.innerHTML = `
+              <label for="player-name" style="margin-right: 10px">Player Name:</label>
+              <select class="js-example-basic-multiple" style="width: 30%; margin-right: 15px; height: 25px;" name="player-name[]">
+                  <option value="" selected="selected">Select player's name...</option>
+              </select>
+              <label style="margin-right: 10px;" for="date">Choose Date (yyyy-mm-dd): </label>
+              <select name="date[]" style="width: 10%; height: 25px;"></select>
+              <input style="background-color: rgb(209, 96, 96); color: rgb(84, 0, 0); font-size: medium; margin-left: 10px;" type="button" value="-" onclick="removePlayerDateForm(this)">
+          `;
+  
+          if (firstForm) {
+              const firstFormStyle = window.getComputedStyle(firstForm);
+              newForm.style.marginTop = firstFormStyle.marginTop;
+              newForm.style.marginBottom = firstFormStyle.marginBottom;
+          }
+  
+          container.appendChild(newForm);
+          populateUserOptions(newForm);
+      }
+  
+      // Function to remove a player name and date form
+      function removePlayerDateForm(button) {
+          const form = button.parentNode;
+          form.parentNode.removeChild(form);
+      }
+  
+      // Function to fetch user options and populate the select element
+      function populateUserOptions(form) {
+          const userSelect = form.querySelector('select[name="player-name[]"]');
+          fetch('/get_player_names_date')
+              .then(response => response.json())
+              .then(data => {
+                  data.forEach(player => {
+                      const option = document.createElement('option');
+                      option.value = player.name;
+                      option.textContent = player.name;
+                      userSelect.appendChild(option);
+                  });
+              })
+              .catch(error => console.log(error));
+  
+          userSelect.addEventListener('change', () => {
+              populateDateOptions(form, userSelect.value);
+          });
+      }
+  
+      // Function to fetch date options based on the selected user and populate the select element
+      function populateDateOptions(form, selectedUser) {
+          const dateSelect = form.querySelector('select[name="date[]"]');
+          dateSelect.innerHTML = ''; // Clear previous options
+  
+          if (selectedUser) {
+              fetch(`/get_dates_by_user?user=${selectedUser}`)
+                  .then(response => response.json())
+                  .then(data => {
+                      data.forEach(date => {
+                          const option = document.createElement('option');
+                          option.value = date;
+                          option.textContent = date;
+                          dateSelect.appendChild(option);
+                      });
+                  })
+                  .catch(error => console.log(error));
+          }
+      }
+  
+      // Call the populateUserOptions function initially for the first form
+      populateUserOptions(document.querySelector('.player-date'));
+
+
+function multiAnalysis() {
+  const forms = document.querySelectorAll('.player-date');
+  const selectedCombinations = [];
+
+  forms.forEach(form => {
+    const userSelect = form.querySelector('select[name="player-name[]"]');
+    const dateSelect = form.querySelector('select[name="date[]"]');
+    const selectedUser = userSelect.value;
+    const selectedDate = dateSelect.value;
+
+    if (selectedUser && selectedDate) {
+      selectedCombinations.push({ user: selectedUser, date: selectedDate });
+    }
+  });
+
+  // Send a GET request to the server with the selected combinations to generate MultiRawVT.json
+  fetch(`/get_multi_vt?selected_combinations=${JSON.stringify(selectedCombinations)}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data); // Example: Print the response to the console
+      // Call the function to generate MultiVtTime.json after MultiRawVT.json is generated
+      return generateMultiVtTime();
+    })
+    .then(data => {
+      console.log(data); // Example: Print the response to the console
+      // Call the function to generate MultiFinalVT.json after MultiVtTime.json is generated
+      return generateMultiFinalVT();
+    })
+    .then(data => {
+      console.log(data); // Example: Print the response to the console
+      // Call the function to generate MainMultiAnalysis.json after MultiFinalVT.json is generated
+      return generateMainMultiAnalysis();
+    })
+    .then(data => {
+      console.log(data); // Example: Print the response to the console
+      // Call the function to generate AssessmentResult.json after MainMultiAnalysis.json is generated
+      return generateAssessmentResult();
+    })
+    .then(data => {
+      console.log(data); // Example: Print the response to the console
+      // Call the function to generate AssessmentResult.json after MainMultiAnalysis.json is generated
+      generateAssessmentResultTable();
+    })
+    .then(data => {
+      console.log(data); // Example: Print the response to the console
+      // Call the function to generate AssessmentResult.json after MainMultiAnalysis.json is generated
+      showAssessmentResult();
+    })
+    .then(data => {
+      console.log(data); // Example: Print the response to the console
+      // Call the function to generate AssessmentResult.json after MainMultiAnalysis.json is generated
+      showPie();
+    })
+    .then(data => {
+      console.log(data); // Example: Print the response to the console
+      generateGraphResult()
+      generateGraphResultDetail()
+      // generateGraphResultDetailTimeStress()
+      // resetGraphs();
+      // generateGraphs()
+    })
+    .then(data => {
+      console.log(data); // Example: Print the response to the console
+      return showBody();
+    })
+    .then(data => {
+      console.log(data); // Example: Print the response to the console
+    })
+    .catch(error => console.log(error));
+}
+
+// Function to generate MultiVtTime.json
+function generateMultiVtTime() {
+  // Send a GET request to the server to generate MultiVtTime.json
+  return fetch('/merge_multi_time_vt')
+    .then(response => response.json())
+    .catch(error => console.log(error));
+}
+
+// Function to generate MultiFinalVT.json
+function generateMultiFinalVT() {
+  // Send a GET request to the server to generate MultiFinalVT.json
+  return fetch('/analyze_multi_per_scene')
+    .then(response => response.json())
+    .catch(error => console.log(error));
+}
+
+// Function to generate MainMultiAnalysis.json
+function generateMainMultiAnalysis() {
+  // Send a GET request to the server to generate MainMultiAnalysis.json
+  return fetch('/extract_main_multi_analysis')
+    .then(response => response.json())
+    .catch(error => console.log(error));
+}
+
+
+
+// Function to generate AssessmentResult.json
+function generateAssessmentResult() {
+  // Send a GET request to the server to generate AssessmentResult.json
+  return fetch('/generate_assessment_result')
+    .then(response => response.json())
+    .catch(error => console.log(error));
+}
+
+
+
+
+// Function to generate the table based on the AssessmentResult.json data
+function generateAssessmentResultTable() {
+  const tableElement = document.querySelector('#assessment-result-table');
+  tableElement.style.display = 'none'; // Hide the table initially
+
+  const tableBody = document.querySelector('#assessment-result-table tbody');
+  tableBody.innerHTML = ''; // Clear the table body before regenerating the table
+
+  fetch('/generate_assessment_result')
+    .then(response => response.json())
+    .then(data => {
+      const overallStressLv = data.overall_stress;
+      const overallTimePlay = data.overall_time;
+      const details = data.details;
+
+      // Create the row for Overall Stress Lv and Overall Time Play
+      const overallRow = document.createElement('tr');
+      overallRow.innerHTML = `
+        <td rowspan="${details.length + 1}">${overallStressLv}</td>
+        <td rowspan="${details.length + 1}">${overallTimePlay}</td>
+      `;
+      tableBody.appendChild(overallRow);
+
+      // Create the rows for details
+      details.forEach(row => {
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+          <td>${row.scene}</td>
+          <td>${row.avg_total_time}</td>
+          <td>${row.avg_stress_level}</td>
+          <td>${row.total_users}</td>
+        `;
+        tableBody.appendChild(newRow);
+      });
+
+      // Display the table
+      tableElement.style.display = 'block';
+
+    })
+    .catch(error => console.log(error));
+}
+
+
+
+// Function to show the assessment result based on the generated AssessmentResult.json data
+function showAssessmentResult() {
+  fetch('/generate_assessment_result')
+    .then(response => response.json())
+    .then(data => {
+      const overallStressLv = data.overall_stress;
+      const overallTimePlay = data.overall_time;
+
+      // Update the form with the assessment result and total time
+      $('#AsRes').text(`${overallStressLv.toFixed(2)}`);
+      
+      let AsRes = '';
+      let colorBoxResultClass = '';
+      
+      if (overallStressLv < 3) {
+        AsRes = 'Game is stressless';
+        colorBoxResultClass = 'green';
+      } else if (overallStressLv >= 3 && overallStressLv < 4) {
+        AsRes = 'Game is neutral';
+        colorBoxResultClass = 'yellow';
+      } else {
+        AsRes = 'Game is stressful';
+        colorBoxResultClass = 'red';
+      }
+
+
+        // update the form with the assessment result and total time
+      $('#AsRes').text('Result');
+      $('#colorBoxResult').removeClass().addClass('color-boxA ' + colorBoxResultClass).text(overallStressLv.toFixed(2));
+      $('#AsResTex').text(AsRes);
+      $('#overallSL').text(`Overall Stress Lv: ${overallStressLv.toFixed(2)}`);
+      $('#timeSpentText').text(`Overall Time Play: ${overallTimePlay}`);
+      // $('#TotalTime').text(overallTimeInHoursMinsSecs);
+
+      // detail
+      $('#detailScoreH').addClass('color-boxB red');
+      $('#detailScoreG').addClass('color-boxB yellow');
+      $('#detailScoreL').addClass('color-boxB green');
+
+      $('#detailScoreHt').text('Game is stressful (Stress Score >= 4)');
+      $('#detailScoreGt').text('Game is neutral (3<= Stress Score < 4)');
+      $('#detailScoreLt').text('Game is stressless (Stress Score < 3)');
+
+      // Show the form
+      $('#formRes').show();
+    })
+    .catch(error => console.log(error));
+}
+
+
+
+
+
+function generateGraphResult() {
+  fetch('/generate_assessment_result')
+    .then(response => response.json())
+    .then(data => {
+      const details = data.details;
+
+      // Update the analysis table with data
+      var analysisTableScene = $("#analysisTableSceneGraph");
+      analysisTableScene.empty(); // Clear the table before updating
+
+      // Append the table headers
+      var thead = $("<thead class='sticky-header'>");
+      var headerRow = $("<tr>");
+      headerRow.append($("<th>").text("Scene"));
+      headerRow.append($("<th>").text("Total Time in Scene"));
+      headerRow.append($("<th>").text("Avg Stress"));
+      thead.append(headerRow);
+      analysisTableScene.append(thead);
+
+      // Iterate over data.details and append rows to the table
+      details.forEach(function (sceneData) {
+        const row = $("<tr>");
+        row.append($("<td>").text(sceneData.scene));
+        row.append($("<td>").text(sceneData.avg_total_time));
+        row.append($("<td>").text(sceneData.avg_stress_level));
+        analysisTableScene.append(row);
+      });
+
+      generateChart(0, 2, 'line');
+
+      analysisTableScene.show(); // Display the table
+    })
+    .catch(error => console.log(error));
+}
+
+
+
+
+
+// function generateGraphResultDetail() {
+//   fetch('/getMainMultiAnalysis')
+//     .then(response => response.json())
+//     .then(data => {
+//       const users = data;
+
+//     })}
+
+
+
+let lineChart = null; // Variable to store the line chart instance
+
+function generateGraphResultDetail() {
+  fetch('/getMainMultiAnalysis')
+    .then(response => response.json())
+    .then(data => {
+      const users = data;
+
+      // Prepare data for the line graph
+      const datasets = [];
+      const scenes = new Set();
+
+      users.forEach(user => {
+        const userName = user.user;
+        const userDate = user.date;
+        const userRecords = user.scenes;
+
+        const dataset = {
+          label: `${userName} - ${userDate}`,
+          data: [],
+          borderColor: getRandomColor(),
+          borderWidth: 2,
+          fill: false
+        };
+
+        userRecords.forEach(record => {
+          const scene = record.scene;
+
+          scenes.add(scene); // Add scene to the set
+
+          const index = Array.from(scenes).indexOf(scene);
+          dataset.data[index] = record.avg_stress;
+        });
+
+        datasets.push(dataset);
+      });
+
+      // Convert set of scenes to array and sort them alphabetically
+      const uniqueScenes = Array.from(scenes).sort();
+
+      // Fill in missing data points with 0
+      datasets.forEach(dataset => {
+        dataset.data = uniqueScenes.map(scene => {
+          const index = Array.from(scenes).indexOf(scene);
+          return typeof dataset.data[index] !== 'undefined' ? dataset.data[index] : 0;
+        });
+      });
+
+      // Reset the chart if it already exists
+      if (lineChart !== null) {
+        lineChart.destroy();
+      }
+
+      // Create the line graph
+    const ctx = document.getElementById('myChartDetail').getContext('2d');
+    lineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: uniqueScenes,
+        datasets: datasets
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 5
+          }
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: 'Avg Stress Levels by Scene',
+            font: {
+              size: 25
+            },
+            padding: {
+              bottom: 25
+            }
+          },
+          legend: {
+            display: true,
+            labels: {
+              padding: 15
+            }
+          }
+        }
+      }
+    });
+
+    })
+    .catch(error => console.log(error));
+}
+
+// Helper function to generate random color
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+
+
+
+function generateGraphResultDetailBar() {
+  fetch('/getMainMultiAnalysis')
+    .then(response => response.json())
+    .then(data => {
+      const users = data;
+
+      // Prepare data for the line graph
+      const datasets = [];
+      const scenes = new Set();
+
+      users.forEach(user => {
+        const userName = user.user;
+        const userDate = user.date;
+        const userRecords = user.scenes;
+
+        const dataset = {
+          label: `${userName} - ${userDate}`,
+          data: [],
+          borderColor: getRandomColor(),
+          borderWidth: 2,
+          fill: false
+        };
+
+        userRecords.forEach(record => {
+          const scene = record.scene;
+
+          scenes.add(scene); // Add scene to the set
+
+          const index = Array.from(scenes).indexOf(scene);
+          dataset.data[index] = record.avg_stress;
+        });
+
+        datasets.push(dataset);
+      });
+
+      // Convert set of scenes to array and sort them alphabetically
+      const uniqueScenes = Array.from(scenes).sort();
+
+      // Fill in missing data points with 0
+      datasets.forEach(dataset => {
+        dataset.data = uniqueScenes.map(scene => {
+          const index = Array.from(scenes).indexOf(scene);
+          return typeof dataset.data[index] !== 'undefined' ? dataset.data[index] : 0;
+        });
+      });
+
+      // Reset the chart if it already exists
+      if (lineChart !== null) {
+        lineChart.destroy();
+      }
+
+      // Create the line graph
+    const ctx = document.getElementById('myChartDetail').getContext('2d');
+    lineChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: uniqueScenes,
+        datasets: datasets
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 5
+          }
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: 'Avg Stress Levels by Scene',
+            font: {
+              size: 25
+            },
+            padding: {
+              bottom: 25
+            }
+          },
+          legend: {
+            display: true,
+            labels: {
+              padding: 15
+            }
+          }
+        }
+      }
+    });
+
+    })
+    .catch(error => console.log(error));
+}
+
+// Helper function to generate random color
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+
+// let timeLineChart = null; // Variable to store the line chart instance
+
+function generateGraphResultDetailTime() {
+  fetch('/getMainMultiAnalysis')
+    .then(response => response.json())
+    .then(data => {
+      const users = data;
+
+      // Prepare data for the line graph
+      const datasets = [];
+      const scenes = new Set();
+
+      users.forEach(user => {
+        const userName = user.user;
+        const userDate = user.date;
+        const userRecords = user.scenes;
+
+        const dataset = {
+          label: `${userName} - ${userDate}`,
+          data: [],
+          borderColor: getRandomColor(),
+          borderWidth: 2,
+          fill: false
+        };
+
+        userRecords.forEach(record => {
+          const scene = record.scene;
+
+          scenes.add(scene); // Add scene to the set
+
+          const index = Array.from(scenes).indexOf(scene);
+          const totalTimeInSeconds = convertTimeToSeconds(record.total_time_in_scene);
+          dataset.data[index] = totalTimeInSeconds;
+        });
+
+        datasets.push(dataset);
+      });
+
+      // Convert set of scenes to array and sort them alphabetically
+      const uniqueScenes = Array.from(scenes).sort();
+
+      // Fill in missing data points with 0
+      datasets.forEach(dataset => {
+        dataset.data = uniqueScenes.map(scene => {
+          const index = Array.from(scenes).indexOf(scene);
+          return typeof dataset.data[index] !== 'undefined' ? dataset.data[index] : 0;
+        });
+      });
+
+      // Reset the chart if it already exists
+      if (lineChart !== null) {
+    lineChart.destroy();
+      }
+      const ctx = document.getElementById('myChartDetail').getContext('2d');
+      lineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: uniqueScenes,
+          datasets: datasets
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              maxTicksLimit: 6,
+              ticks: {
+                callback: (value) => formatTime(value),
+              },
+            },
+          },
+          plugins: {
+            title: {
+              display: true,
+              text: 'Avg Total Time by Scene',
+              font: {
+                size: 25,
+              },
+              padding: {
+                bottom: 25,
+              },
+            },
+            legend: {
+              display: true,
+              labels: {
+                padding: 15,
+              },
+            },
+          },
+        },
+      });
+    })
+    .catch(error => console.log(error));
+}
+
+// Helper function to convert time string to seconds
+function convertTimeToSeconds(time) {
+  const timeArr = time.split(':');
+  const hours = parseInt(timeArr[0]);
+  const minutes = parseInt(timeArr[1]);
+  const seconds = parseInt(timeArr[2]);
+  return hours * 3600 + minutes * 60 + seconds;
+}
+
+// Helper function to format time in hh:mm:ss
+function formatTime(seconds) {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const remainingSeconds = seconds % 60;
+  return (
+    hours.toString().padStart(2, '0') +
+    ':' +
+    minutes.toString().padStart(2, '0') +
+    ':' +
+    Math.floor(remainingSeconds).toString().padStart(2, '0')
+  );
+}
+
+  
+
+// Helper function to generate random color
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+
+function generateGraphResultDetailTimeBar() {
+  fetch('/getMainMultiAnalysis')
+    .then(response => response.json())
+    .then(data => {
+      const users = data;
+
+      // Prepare data for the line graph
+      const datasets = [];
+      const scenes = new Set();
+
+      users.forEach(user => {
+        const userName = user.user;
+        const userDate = user.date;
+        const userRecords = user.scenes;
+
+        const dataset = {
+          label: `${userName} - ${userDate}`,
+          data: [],
+          borderColor: getRandomColor(),
+          borderWidth: 2,
+          fill: false
+        };
+
+        userRecords.forEach(record => {
+          const scene = record.scene;
+
+          scenes.add(scene); // Add scene to the set
+
+          const index = Array.from(scenes).indexOf(scene);
+          const totalTimeInSeconds = convertTimeToSeconds(record.total_time_in_scene);
+          dataset.data[index] = totalTimeInSeconds;
+        });
+
+        datasets.push(dataset);
+      });
+
+      // Convert set of scenes to array and sort them alphabetically
+      const uniqueScenes = Array.from(scenes).sort();
+
+      // Fill in missing data points with 0
+      datasets.forEach(dataset => {
+        dataset.data = uniqueScenes.map(scene => {
+          const index = Array.from(scenes).indexOf(scene);
+          return typeof dataset.data[index] !== 'undefined' ? dataset.data[index] : 0;
+        });
+      });
+
+      // Reset the chart if it already exists
+      if (lineChart !== null) {
+    lineChart.destroy();
+      }
+      const ctx = document.getElementById('myChartDetail').getContext('2d');
+      lineChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: uniqueScenes,
+          datasets: datasets
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              maxTicksLimit: 6,
+              ticks: {
+                callback: (value) => formatTime(value),
+              },
+            },
+          },
+          plugins: {
+            title: {
+              display: true,
+              text: 'Avg Total Time by Scene',
+              font: {
+                size: 25,
+              },
+              padding: {
+                bottom: 25,
+              },
+            },
+            legend: {
+              display: true,
+              labels: {
+                padding: 15,
+              },
+            },
+          },
+        },
+      });
+    })
+    .catch(error => console.log(error));
+}
+
+// Helper function to convert time string to seconds
+function convertTimeToSeconds(time) {
+  const timeArr = time.split(':');
+  const hours = parseInt(timeArr[0]);
+  const minutes = parseInt(timeArr[1]);
+  const seconds = parseInt(timeArr[2]);
+  return hours * 3600 + minutes * 60 + seconds;
+}
+
+// Helper function to format time in hh:mm:ss
+function formatTime(seconds) {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const remainingSeconds = seconds % 60;
+  return (
+    hours.toString().padStart(2, '0') +
+    ':' +
+    minutes.toString().padStart(2, '0') +
+    ':' +
+    Math.floor(remainingSeconds).toString().padStart(2, '0')
+  );
+}
+
+  
+
+// Helper function to generate random color
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+
+
+
+// function generateGraphResultDetailTimeStress() {
+//   fetch('/getMainMultiAnalysis')
+//     .then(response => response.json())
+//     .then(data => {
+//       const users = data;
+
+//       // Prepare data for the line graph
+//       const datasets = [];
+//       const scenes = new Set();
+
+//       users.forEach(user => {
+//         const userName = user.user;
+//         const userDate = user.date;
+//         const userRecords = user.scenes;
+
+//         const dataset = {
+//           label: `${userName} - ${userDate}`,
+//           data: [],
+//           borderColor: getRandomColor(),
+//           borderWidth: 2,
+//           fill: false
+//         };
+
+//         userRecords.forEach(record => {
+//           const scene = record.scene;
+
+//           scenes.add(scene); // Add scene to the set
+
+//           const index = Array.from(scenes).indexOf(scene);
+//           const totalTimeInSeconds = convertTimeToSeconds(record.total_time_in_scene);
+//           dataset.data[index] = totalTimeInSeconds;
+//         });
+
+//         datasets.push(dataset);
+//       });
+
+//       // Convert set of scenes to array and sort them alphabetically
+//       const uniqueScenes = Array.from(scenes).sort();
+
+//       // Fill in missing data points with 0
+//       datasets.forEach(dataset => {
+//         dataset.data = uniqueScenes.map(scene => {
+//           const index = Array.from(scenes).indexOf(scene);
+//           return typeof dataset.data[index] !== 'undefined' ? dataset.data[index] : 0;
+//         });
+//       });
+
+//       // Reset the chart if it already exists
+//       if (lineChart !== null) {
+//     lineChart.destroy();
+//       }
+//       const ctx = document.getElementById('myChartDetail').getContext('2d');
+//       lineChart = new Chart(ctx, {
+//         type: 'line',
+//         data: {
+//           labels: uniqueScenes,
+//           datasets: datasets
+//         },
+//         options: {
+//           scales: {
+//             y: {
+//               beginAtZero: true,
+//               maxTicksLimit: 6,
+//               ticks: {
+//                 callback: (value) => formatTime(value),
+//               },
+//             },
+//           },
+//           plugins: {
+//             title: {
+//               display: true,
+//               text: 'Avg Stress Level by Avg Total Time',
+//               font: {
+//                 size: 25,
+//               },
+//               padding: {
+//                 bottom: 25,
+//               },
+//             },
+//             legend: {
+//               display: true,
+//               labels: {
+//                 padding: 15,
+//               },
+//             },
+//           },
+//         },
+//       });
+//     })
+//     .catch(error => console.log(error));
+// }
+
+// // Helper function to convert time string to seconds
+// function convertTimeToSeconds(time) {
+//   const timeArr = time.split(':');
+//   const hours = parseInt(timeArr[0]);
+//   const minutes = parseInt(timeArr[1]);
+//   const seconds = parseInt(timeArr[2]);
+//   return hours * 3600 + minutes * 60 + seconds;
+// }
+
+// // Helper function to format time in hh:mm:ss
+// function formatTime(seconds) {
+//   const hours = Math.floor(seconds / 3600);
+//   const minutes = Math.floor((seconds % 3600) / 60);
+//   const remainingSeconds = seconds % 60;
+//   return (
+//     hours.toString().padStart(2, '0') +
+//     ':' +
+//     minutes.toString().padStart(2, '0') +
+//     ':' +
+//     Math.floor(remainingSeconds).toString().padStart(2, '0')
+//   );
+// }
+
+  
+
+// // Helper function to generate random color
+// function getRandomColor() {
+//   const letters = '0123456789ABCDEF';
+//   let color = '#';
+//   for (let i = 0; i < 6; i++) {
+//     color += letters[Math.floor(Math.random() * 16)];
+//   }
+//   return color;
+// }
+
+
+// function generateGraphResultDetailTimeStressBar() {
+//   fetch('/getMainMultiAnalysis')
+//     .then(response => response.json())
+//     .then(data => {
+//       const users = data;
+
+//       // Prepare data for the line graph
+//       const datasets = [];
+//       const scenes = new Set();
+
+//       users.forEach(user => {
+//         const userName = user.user;
+//         const userDate = user.date;
+//         const userRecords = user.scenes;
+
+//         const dataset = {
+//           label: `${userName} - ${userDate}`,
+//           data: [],
+//           borderColor: getRandomColor(),
+//           borderWidth: 2,
+//           fill: false
+//         };
+
+//         userRecords.forEach(record => {
+//           const scene = record.scene;
+
+//           scenes.add(scene); // Add scene to the set
+
+//           const index = Array.from(scenes).indexOf(scene);
+//           const totalTimeInSeconds = convertTimeToSeconds(record.total_time_in_scene);
+//           dataset.data[index] = totalTimeInSeconds;
+//         });
+
+//         datasets.push(dataset);
+//       });
+
+//       // Convert set of scenes to array and sort them alphabetically
+//       const uniqueScenes = Array.from(scenes).sort();
+
+//       // Fill in missing data points with 0
+//       datasets.forEach(dataset => {
+//         dataset.data = uniqueScenes.map(scene => {
+//           const index = Array.from(scenes).indexOf(scene);
+//           return typeof dataset.data[index] !== 'undefined' ? dataset.data[index] : 0;
+//         });
+//       });
+
+//       // Reset the chart if it already exists
+//       if (lineChart !== null) {
+//     lineChart.destroy();
+//       }
+//       const ctx = document.getElementById('myChartDetail').getContext('2d');
+//       lineChart = new Chart(ctx, {
+//         type: 'bar',
+//         data: {
+//           labels: uniqueScenes,
+//           datasets: datasets
+//         },
+//         options: {
+//           scales: {
+//             y: {
+//               beginAtZero: true,
+//               maxTicksLimit: 6,
+//               ticks: {
+//                 callback: (value) => formatTime(value),
+//               },
+//             },
+//           },
+//           plugins: {
+//             title: {
+//               display: true,
+//               text: 'Avg Stress Level by Avg Total Time',
+//               font: {
+//                 size: 25,
+//               },
+//               padding: {
+//                 bottom: 25,
+//               },
+//             },
+//             legend: {
+//               display: true,
+//               labels: {
+//                 padding: 15,
+//               },
+//             },
+//           },
+//         },
+//       });
+//     })
+//     .catch(error => console.log(error));
+// }
+
+// // Helper function to convert time string to seconds
+// function convertTimeToSeconds(time) {
+//   const timeArr = time.split(':');
+//   const hours = parseInt(timeArr[0]);
+//   const minutes = parseInt(timeArr[1]);
+//   const seconds = parseInt(timeArr[2]);
+//   return hours * 3600 + minutes * 60 + seconds;
+// }
+
+// // Helper function to format time in hh:mm:ss
+// function formatTime(seconds) {
+//   const hours = Math.floor(seconds / 3600);
+//   const minutes = Math.floor((seconds % 3600) / 60);
+//   const remainingSeconds = seconds % 60;
+//   return (
+//     hours.toString().padStart(2, '0') +
+//     ':' +
+//     minutes.toString().padStart(2, '0') +
+//     ':' +
+//     Math.floor(remainingSeconds).toString().padStart(2, '0')
+//   );
+// }
+
+  
+
+// // Helper function to generate random color
+// function getRandomColor() {
+//   const letters = '0123456789ABCDEF';
+//   let color = '#';
+//   for (let i = 0; i < 6; i++) {
+//     color += letters[Math.floor(Math.random() * 16)];
+//   }
+//   return color;
+// }
+
+
+
+
+
+
+
+
+
+
+
+// Function to show the pie chart based on the assessment result data
+function showPie() {
+  fetch('/generate_assessment_result')
+    .then(response => response.json())
+    .then(data => {
+      const overallStressLv = data.overall_stress;
+      const overallTimePlay = data.overall_time;
+      const details = data.details;
+
+      // Calculate the average stress level for each scene
+      const scenes = {};
+      const totalStress = {};
+      const fileCount = details.length;
+
+      details.forEach(detail => {
+        const scene = detail.scene;
+        const stressLevel = detail.avg_stress_level;
+
+        if (!(scene in scenes)) {
+          scenes[scene] = stressLevel;
+          totalStress[scene] = stressLevel;
+        } else {
+          totalStress[scene] += stressLevel;
+        }
+      });
+
+      const overallAvgStress = overallStressLv / fileCount;
+
+      // Count the distribution of scenes based on stress levels
+      let countLowStress = 0;
+      let countMediumStress = 0;
+      let countHighStress = 0;
+
+      Object.values(scenes).forEach(avgStress => {
+        if (avgStress < 3) {
+          countLowStress += 1;
+        } else if (avgStress >= 3 && avgStress < 4) {
+          countMediumStress += 1;
+        } else {
+          countHighStress += 1;
+        }
+      });
+
+      // Create the pie chart
+      const ctx = document.getElementById('pieChart').getContext('2d');
+      if (window.chart) {
+        // Destroy previous chart instance if exists
+        window.chart.destroy();
+      }
+      window.chart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: ['Avg Stress lv < 3', '3 <= Avg Stress lv < 4', 'Avg Stress lv >= 4'],
+          datasets: [{
+            data: [countLowStress, countMediumStress, countHighStress],
+            backgroundColor: ['#65a512', '#f7d219', '#c51717']
+          }]
+        },
+        options: {
+          plugins: {
+            title: {
+              display: true,
+              text: 'Stress Level Distribution',
+              position: 'top',
+              font: {
+                size: 16, // Modify the font size to your desired value
+              }
+            },
+            legend: {
+              position: 'bottom',
+              align: 'center',
+              labels: {
+                boxWidth: 13 // Adjust the box width to increase space per legend item
+              }
+            }
+          }
+        }
+      });
+    })
+    .catch(error => console.log(error));
+}
+
+
+
+function showBody(){
+  var analysis = document.getElementById('bodyAnalysis');
+  analysis.style.display = 'block';
+}
+
+
+  </script>
+  
+
+<div hidden id="bodyAnalysis">
+
+
+  <div >
+    <button style="margin-bottom: 15px; background-color: rgb(128, 210, 73);" onclick="window.location.href='{{ url_for('multiAnalysis') }}#Assessment'">Assessment Result</button>
+    <button style="margin-bottom: 15px; background-color: rgb(128, 210, 73)" onclick="window.location.href='{{ url_for('multiAnalysis') }}#ResultDetail'">Result Detail</button>
+    <button style="margin-bottom: 15px; background-color: rgb(128, 210, 73)" onclick="window.location.href='{{ url_for('multiAnalysis') }}#Graph'">Result Graph Representation</button>
+    <button style="margin-bottom: 15px; background-color: rgb(128, 210, 73)" onclick="window.location.href='{{ url_for('multiAnalysis') }}#GraphMulti'">Detailed Graph Representation</button>
+    <button style="margin-bottom: 15px; background-color: rgb(128, 210, 73)" onclick="window.location.href='{{ url_for('multiAnalysis') }}#Glossary'">Glossary</button>
+    
+    </div>
+
+
+    <div>
+      <h2 style="
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        background-color: rgb(214, 214, 214);
+        height: 50px;
+        margin-top:15px;
+        margin-bottom:50px;
+       "
+       id="Assessment">
+        Assessment Result
+      </h2>
+    </div>
+
+
+
+
+    <div style="margin-bottom: 130px; margin-top: 75px;">
+      <div style="margin-bottom: 30px;">
+        <h2 id="AsRes"></h2>
+      </div>
+      <form id="formRes">
+        <div id="colorBoxResult" class="color-box"></div>
+        <div>
+          <h3 id="AsResTex"></h3>
+        </div>
+        
+        <div class="flex" style="margin-top: -30px;">
+          <h4 style="padding: 25px;" id="overallSL"></h4>
+          <h4 style="padding: 5px;" id="timeSpentText"></h4>
+        </div>
+    
+        <div class="flex1" style="margin-top: -43px; margin-bottom: 30px;">
+          <div id="detailScoreH"></div>
+          <div class="color-label" id="detailScoreHt" style="padding-right: 25px;"></div>
+          <div id="detailScoreG"></div>
+          <div class="color-label" id="detailScoreGt" style="padding-right: 25px;"></div>
+          <div id="detailScoreL"></div>
+          <div class="color-label" id="detailScoreLt"></div>      
+        </div>
+        
+        <canvas id="pieChart"></canvas>
+      </form>
+    </div>   
+
+
+
+
+
+
+
+
+
+
+<!-- asssessment detail -->
+
+  <div>
+    <h2 style="
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      background-color: rgb(214, 214, 214);
+      height: 50px;
+      margin-top:0px;
+     "
+     id="ResultDetail">
+      Result Detail
+    </h2>
+  </div>
+
+
+<div class="scrollableTableMulAnalysis">
+  <table id="assessment-result-table">
+    <thead class='sticky-header'>
+        <th>Overall Stress Lv</th>
+        <th>Overall Time Play</th>
+        <th>Scene</th>
+        <th>Avg Total Time in Scene</th>
+        <th>Avg Stress Lv in Scene</th>
+        <th>Total Player Plays the Scene</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+
+<button class="btn-primary" id="export-btn">Download xls</button>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#export-btn").click(function() {
+      // Get the HTML table element
+      var htmlTable = document.getElementById("assessment-result-table");
+
+      // Convert the HTML table to a worksheet in a new XLS workbook
+      var workbook = XLSX.utils.table_to_book(htmlTable);
+
+      // Generate the XLS file
+      var xlsFile = XLSX.write(workbook, {bookType: 'xls', type: 'binary'});
+
+      // Convert the XLS file to a Blob object
+      var blob = new Blob([stringToArrayBuffer(xlsFile)], {type: 'application/vnd.ms-excel'});
+
+      // Create a link to download the XLS file with a filename using the current date and time
+      var filename = 'GVT_ResultDetail-' + getCurrentDateTime() + '.xls';
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = filename;
+      a.click();
+    });
+
+    function getCurrentDateTime() {
+      var now = new Date();
+      var year = now.getFullYear();
+      var month = now.getMonth() + 1;
+      var day = now.getDate();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+      return year + '-' + padNumber(month) + '-' + padNumber(day) + '/' + padNumber(hours) + '-' + padNumber(minutes) + '-' + padNumber(seconds);
+    }
+
+    function padNumber(number) {
+      return number.toString().padStart(2, '0');
+    }
+
+    function stringToArrayBuffer(string) {
+      var buffer = new ArrayBuffer(string.length);
+      var view = new Uint8Array(buffer);
+      for (var i = 0; i < string.length; i++) {
+        view[i] = string.charCodeAt(i) & 0xff;
+      }
+      return buffer;
+    }
+  });
+</script>
+
+
+
+<!-- graph -->
+
+<div>
+  <h2 style="
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: rgb(214, 214, 214);
+    height: 50px;
+    margin-top:50px;
+   "
+   id="Graph">
+   Result Graph Representation
+  </h2>
+</div>
+
+
+
+
+
+<!-- <div class="scrollable-table3"> -->
+  <div hidden class="scrollable-table3">
+    <table id="analysisTableSceneGraph">
+      <!-- The table will be generated dynamically -->
+    </table>
+  </div>
+  
+  
+  
+  <form>
+    <label for="yAxisColumn">Y-Axis Column:</label>
+    <select class="space" id="yAxisColumn">
+        <option value="2">Stress Lv</option>
+        <option value="1">Total Time</option>
+    </select>
+
+    <label for="xAxisColumn">X-Axis Column:</label>
+    <select class="space" id="xAxisColumn">
+        <option value="0">Scene</option>
+        <option value="1">Total Time</option>
+    </select>
+    
+    <label for="chartType">Chart Type:</label>
+    <select class="space" id="chartType">
+        <option value="line">Line</option>
+        <option value="bar">Bar</option>
+    </select>
+    
+   <button type="button" onclick="generateChart(document.getElementById('xAxisColumn').value, document.getElementById('yAxisColumn').value, document.getElementById('chartType').value)">Generate Chart</button>
+  
+  
+  
+  </form>
+  
+  
+  
+  <canvas class="marginbawah" id="myChart"></canvas>
+  <script>
+    window.onload = function() {
+    generateChart(0, 2, 'line');
+    // generateChart();
+  };
+  </script>
+  
+  
+  
+  <script>
+  
+
+  function resetChart(){
+    if (myChart) {
+    myChart.destroy();
+  }
+  }
+  
+  
+  var myChart;
+  
+  function generateChart(xAxis, yAxis, chartType) {
+  
+  // Retrieve table data
+  var table = document.getElementById("analysisTableSceneGraph");
+  var data = [];
+  for (var i = 1; i < table.rows.length; i++) {
+    var row = table.rows[i];
+    var xValue = row.cells[xAxis].innerText;
+    var yValue = row.cells[yAxis].innerText;
+  
+    // Convert time string to seconds if applicable
+    if (xAxis === "1") {
+      var timeParts = xValue.split(":");
+      var hours = parseInt(timeParts[0]);
+      var minutes = parseInt(timeParts[1]);
+      var seconds = parseInt(timeParts[2]);
+      var totalTimeInSeconds = hours * 3600 + minutes * 60 + seconds;
+      xValue = totalTimeInSeconds;
+    } else if (yAxis === "1") {
+      var timeParts = yValue.split(":");
+      var hours = parseInt(timeParts[0]);
+      var minutes = parseInt(timeParts[1]);
+      var seconds = parseInt(timeParts[2]);
+      var totalTimeInSeconds = hours * 3600 + minutes * 60 + seconds;
+      yValue = totalTimeInSeconds;
+    }
+  
+    data.push({ xValue: xValue, yValue: yValue });
+  }
+  
+  // Sort data based on x-axis values if applicable
+  if (xAxis === "1" && yAxis === "2") {
+    data.sort(function (a, b) {
+      return a.xValue - b.xValue;
+    });
+  }
+  
+  // Prepare labels and values for the chart
+  var xLabelStr = xAxis === "1" ? "Avg Total Time":"Scene";
+  var yLabelStr = yAxis === "1" ? "Avg Total Time" : "Avg Stress Level";
+  
+  
+  // Prepare labels and values for the chart
+  var xLabel = xAxis === "1" ? "Total Time (hh:mm:ss)" : "X-Axis";
+  var yLabel = yAxis === "1" ? "Total Time (hh:mm:ss)" : "Y-Axis";
+  var labels = data.map(function (item) {
+    return xAxis === "1" ? formatTime(item.xValue) : item.xValue;
+  });
+  var values = data.map(function (item) {
+    return item.yValue;
+  });
+  
+  
+  // Clear the old chart if it exists
+  if (myChart) {
+    myChart.destroy();
+  }
+  
+  // Determine the background color and border color based on the axis values
+  var backgroundColor, borderColor;
+  if (xAxis === "0" && yAxis === "2") {
+    backgroundColor = "rgba(11, 156, 49, 0.2)";
+    borderColor = "rgba(11, 156, 49, 1)";
+  } else if (xAxis === "0" && yAxis === "1") {
+    backgroundColor = "rgba(255, 165, 0, 0.2)";
+    borderColor = "rgba(255, 165, 0, 1)";
+  } else if (xAxis === "1" && yAxis === "2") {
+    backgroundColor = "rgba(255, 99, 132, 0.2)";
+    borderColor = "rgba(255, 99, 132, 1)";
+  } else {
+    // Default colors
+    backgroundColor = "rgba(11, 156, 49, 0.2)";
+    borderColor = "rgba(11, 156, 49, 1)";
+  }
+  
+  
+  // Create the chart
+  var ctx = document.getElementById("myChart").getContext("2d");
+  myChart = new Chart(ctx, {
+  type: chartType,
+  data: {
+    labels: labels,
+    datasets: [
+      {
+        label: yLabelStr,
+        data: values,
+        borderColor: borderColor,
+        borderWidth: chartType === 'line' ? '2' : '1',
+        fill: chartType === 'line' ? false : undefined,
+        backgroundColor: backgroundColor,
+      },
+    ],
+  },
+  options: {
+    scales: {
+      x: {
+        scaleLabel: {
+          display: true,
+          labelString: xLabel,
+        },
+      },
+      y: {
+        ticks: {
+          callback: function (value) {
+            if (yAxis === "1") {
+              return formatTime(value);
+            } else {
+              return value;
+            }
+          },
+        },
+        scaleLabel: {
+          display: true,
+          labelString: yLabel,
+        },
+      },
+    },
+    plugins: {
+        title: {
+          font: {
+            size: 25},
+          display: true,
+          text: yLabelStr + ' by ' + xLabelStr,
+          padding: {
+             bottom: 25
+          }
+        }
+      }
+  },
+  });
+  }
+  
+  // Helper function to format time in hh:mm:ss
+  function formatTime(seconds) {
+  var hours = Math.floor(seconds / 3600);
+  var minutes = Math.floor((seconds % 3600) / 60);
+  var remainingSeconds = seconds % 60;
+  return (
+    hours.toString().padStart(2, "0") +
+    ":" +
+    minutes.toString().padStart(2, "0") +
+    ":" +
+    remainingSeconds.toString().padStart(2, "0")
+  );
+  }
+  
+  </script>
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+    <div>
+      <h2 style="
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        background-color: rgb(214, 214, 214);
+        height: 50px;
+        margin-top:50px;
+       "
+       id="GraphMulti">
+       Detailed Graph Representation - Multi Players
+      </h2>
+    </div>
+    
+    
+
+
+    <form>
+      <label for="yAxisColumn2">Y-Axis Column:</label>
+      <select class="space" id="yAxisColumn2">
+          <option value="2">Stress Lv</option>
+          <option value="1">Total Time</option>
+      </select>
+    
+      <label for="xAxisColumn2">X-Axis Column:</label>
+      <select class="space" id="xAxisColumn2">
+          <option value="0">Scene</option>
+      </select>
+      
+      <label for="chartType2">Chart Type:</label>
+      <select class="space" id="chartType2">
+          <option value="line">Line</option>
+          <option value="bar">Bar</option>
+      </select>
+      
+     <button type="button" onclick="generateChart2(document.getElementById('xAxisColumn2').value, document.getElementById('yAxisColumn2').value, document.getElementById('chartType2').value)">Generate Chart</button>
+    </form>
+    
+    <canvas class="marginbawah" style="margin-bottom: 100px;" id="myChartDetail"></canvas>
+
+
+
+<script>
+function generateChart2(xAxis, yAxis, chartType) {
+    // Clear the old chart if it exists
+  
+  // stress scene
+  if (xAxis === "0" && yAxis === "2" && chartType === "line") {
+    generateGraphResultDetail()
+  }
+  if (xAxis === "0" && yAxis === "2" && chartType === "bar") {
+    generateGraphResultDetailBar()
+  }
+  // time scene
+  if (xAxis === "0" && yAxis === "1" && chartType === "line") {
+    generateGraphResultDetailTime()
+  }
+  if (xAxis === "0" && yAxis === "1" && chartType === "bar") {
+    generateGraphResultDetailTimeBar()
+  }
+
+} 
+
+
+</script>
+
+
+
+
+
+
+<!-- glossary -->
+
+<div>
+  <h2 style="
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: rgb(214, 214, 214);
+    height: 50px;
+    margin-top:50px;
+   "
+   id="Glossary">
+   Glossary
+  </h2>
+</div>
+
+
+<table class="glossary">
+  <tr>
+    <th>Term</th>
+    <th>Definition</th>
+    <th>Formula</th>
+  </tr>
+  <tr>
+    <td>Avg Stress Level Each Scene</td>
+    <td>Represents the average stress level in each particular scene. It is calculated by summing the multiplication of the all average stress and average total time of that particular scene divided by the total number of records in that particular scene.</td>
+    <td>avg_stress_scene = (sum(avg_stress_scene * avg_total_time_scene))/total_records</td>
+  </tr>
+  <tr>
+    <td>Avg Total Time Each Scene</td>
+    <td>Represents the duration of players play in each particular scene. It is calculated by summing all the average total time in scene divided by the total records that particular scene.</td>
+    <td>avg_total_time = (sum(avg_total_time_scene))/total_records</td>
+  </tr>
+  <tr>
+    <td>Overall Stress Level</td>
+    <td>Represents the overall stress level of the game.</td>
+    <td>overall_stress = (sum(avg_stress_scene * avg_total_time)/total_scene)</td>
+  </tr>
+  <tr>
+    <td>Overall Time Play</td>
+    <td>Represents the overall time play of the game.</td>
+    <td>overall_time_play = (sum(avg_total_time))</td>
+  </tr>
+  </table>
+  
+
+
+
+
+
+
+<!-- generate line graph -->
+<canvas id="line-graph"></canvas>
+
+</div>
+
+
+
+      <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+
+<script>
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function() {scrollFunction()};
+  
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      document.getElementById("myBtn").style.display = "block";
+    } else {
+      document.getElementById("myBtn").style.display = "none";
+    }
+  }
+  
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+  </script>
+    </body>
+
+
+    <footer>
+      <p> <img src="{{ url_for('static', filename='images/se4gd.png') }}" 
+        alt="Footer Image" width="17" height="17" margin-top: "30px">
+        &copy; Arini Nur Rohmah       :]</p>
+    </footer>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ECharts Bar Chart with Custom Bar Width</title>
+  <!-- Include ECharts library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.2.2/echarts.min.js"></script>
+</head>
+<body>
+  <!-- Create a div to hold the chart -->
+  <div id="chart" style="width: 600px; height: 400px;"></div>
+
+  <script>
+    // Initialize ECharts instance
+    const myChart = echarts.init(document.getElementById('chart'));
+
+    // Data with stress and timeInSeconds
+    const data = [
+      { stress: 4, scene: 'opening', time: '00:00:03', timeInSeconds: 3 },
+      { stress: 1, scene: 'color', time: '00:01:00', timeInSeconds: 60 }
+    ];
+
+    // Option for the bar chart
+    const option = {
+      xAxis: {
+        type: 'category',
+        data: data.map(item => item.scene),
+        axisLabel: {
+          interval: 0, // Show all labels on the X-axis
+          rotate: 45   // Rotate X-axis labels for better visibility
+        }
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [{
+        type: 'bar',
+        data: data.map(item => ({
+          name: item.scene,
+          value: [item.scene, item.stress, item.timeInSeconds]
+        })),
+        encode: {
+          x: 0, // Use scene as X-axis
+          y: 1  // Use stress as Y-axis
+        },
+        itemStyle: {
+          normal: {
+            barWidth: function (params) {
+              // The width of the bar will be determined by timeInSeconds
+              return params.data[2] * 10; // You may need to adjust the scaling factor for better visualization
+            }
+          }
+        }
+      }]
+    };
+
+    // Set the chart options and render the chart
+    myChart.setOption(option);
+  </script>
+</body>
+</html>

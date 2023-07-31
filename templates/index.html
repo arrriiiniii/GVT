@@ -1,0 +1,1059 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/xls/0.7.5/xls.core.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/xls/0.7.5/xls.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.core.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/jszip.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="https://d3js.org/d3.v6.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+ 
+  </head>
+  <header>
+    <div class="navbar">
+      <a href="{{ url_for('home') }}">Home</a>
+      <a class="active" href="{{ url_for('singleAnalysis') }}">Single Analysis</a>
+      <a href="{{ url_for('multiAnalysis') }}">Multi Analysis</a>
+      <a href="{{ url_for('about') }}">About</a>
+    </div>
+
+
+
+    <div>
+      <h2 style="
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        background-color: rgb(214, 214, 214);
+        height: 50px;
+        margin-top:0px;
+       ">
+        Single Analysis
+      </h2>
+    </div>
+
+
+
+  </header>
+
+    <body>
+      <form id="selectedForm" style="margin-top: 70px; margin-bottom: 30px;" action="/submit_single_analysis" method="POST">
+        <label for="player-name" style="margin-right: 10px;">Player Name:</label>
+        <select class="js-example-basic-multiple" style="width: 30%; margin-right: 15px; height: 25px;" id="user-select" name="player-name">
+          <option value="" selected="selected">Select player's name...</option>
+        </select>
+        <label style="margin-right: 10px; " for="date">Choose Date (yyyy-mm-dd): </label>
+        <select id="date-select" name="date" style="width: 10%; height: 25px;"></select>
+        <div style="margin-top: 30px;"><input id="analyze-button" type="button" value="Analyze" onclick="analyzeData(); resetChart()"></div>
+    </form>
+
+
+    <script>
+      // Retrieve player names and dates from the server
+      fetch('/get_player_names_date')
+          .then(response => response.json())
+          .then(data => {
+              const userSelect = document.getElementById('user-select');
+              data.forEach(player => {
+                  const option = document.createElement('option');
+                  option.value = player.name;
+                  option.textContent = player.name;
+                  userSelect.appendChild(option);
+              });
+              userSelect.addEventListener('change', updateDates);
+              updateDates();  // Update dates initially
+          })
+          .catch(error => console.log(error));
+  
+      // Update available dates based on the selected player name
+      function updateDates() {
+          const userSelect = document.getElementById('user-select');
+          const selectedUser = userSelect.value;
+          const dateSelect = document.getElementById('date-select');
+          dateSelect.innerHTML = '';  // Clear previous options
+  
+          if (selectedUser) {
+              fetch(`/get_dates_by_user?user=${selectedUser}`)
+                  .then(response => response.json())
+                  .then(data => {
+                      data.forEach(date => {
+                          const option = document.createElement('option');
+                          option.value = date;
+                          option.textContent = date;
+                          dateSelect.appendChild(option);
+                      });
+                  })
+                  .catch(error => console.log(error));
+          }
+      }
+  
+
+
+
+      function retrieveData(selectedUser, selectedDate) {
+    $.getJSON("http://" + location.host + "/api/getVT", { user: selectedUser, date: selectedDate }, function (data) {
+        var table = $("<table>");
+        var headerRow = $("<tr>");
+        headerRow.append($("<th>").text("Time"));
+        headerRow.append($("<th>").text("Scene"));
+        headerRow.append($("<th>").text("Asset"));
+        headerRow.append($("<th>").text("Event"));
+        headerRow.append($("<th>").text("Task"));
+        headerRow.append($("<th>").text("Stress Level"));
+        table.append(headerRow);
+
+        $.each(data, function (index, item) {
+            var row = $("<tr>");
+            var rowClass = index % 2 === 0 ? 'even' : 'odd';
+            row.append($("<td>").text(item.time));
+            row.append($("<td>").text(item.scene));
+            row.append($("<td>").text(item.asset));
+            row.append($("<td>").text(item.events));
+            row.append($("<td>").text(item.task));
+            row.append($("<td>").text(item.stress_level));
+            table.append(row);
+        });
+        $("#data-table").html(table);
+       // Save the VT data to the server
+       $.ajax({
+            url: "/saveRawVt",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (response) {
+                console.log(response);
+                // Call mergeWithTime function
+                updateMergedDataAndTable()
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+
+    });
+}
+
+
+
+
+
+function updateMergedDataAndTable() {
+    // Call mergeWithTime function
+    fetch("/mergeTimeVt")
+        .then(response => response.json())
+        .then(mergedData => {
+            console.log(mergedData);
+            // Update the analysis table with mergedData
+            var analysisTable = $("#analysisTable1");
+            analysisTable.empty(); // Clear the table before updating
+
+            // Append the header row
+            var headerRow = $("<tr>");
+            // headerRow.append($("<th>").text("Time").attr("data-key", "time").addClass("asc"));
+            headerRow.append($("<th>").text("Time").attr("data-key", "time"));
+            headerRow.append($("<th>").text("Scene").attr("data-key", "scene"));
+            headerRow.append($("<th>").text("Asset").attr("data-key", "asset"));
+            headerRow.append($("<th>").text("Events").attr("data-key", "events"));
+            headerRow.append($("<th>").text("Task").attr("data-key", "task"));
+            headerRow.append($("<th>").text("Time Spent").attr("data-key", "time_spent"));
+            headerRow.append($("<th>").text("Time Accumulation").attr("data-key", "time_accumulation"));
+            headerRow.append($("<th>").text("Stress Level").attr("data-key", "stress_level"));
+            analysisTable.append(headerRow);
+
+            // Iterate over mergedData and append rows to the table
+            mergedData.forEach(item => {
+                var row = $("<tr class='data-row'>");
+                row.attr("data-stress-level", item.stress_level);
+                row.attr("data-task", item.task);
+                row.append($("<td>").text(item.time));
+                row.append($("<td>").text(item.scene));
+                row.append($("<td>").text(item.asset));
+                row.append($("<td>").text(item.events));
+                row.append($("<td>").text(item.task));
+                row.append($("<td>").text(item.time_spent));
+                row.append($("<td>").text(item.time_accumulation));
+                row.append($("<td>").text(item.stress_level));
+                analysisTable.append(row);
+            });
+
+            VTFinalScene()
+            VTFinalSceneGraph()
+            
+
+            
+
+
+            analysisTable.show(); // Display the table
+
+            // Color the rows based on stress_level
+            var dataRows = document.querySelectorAll(".data-row");
+            for (var i = 0; i < dataRows.length; i++) {
+                var row = dataRows[i];
+                var stressLevel = row.getAttribute("data-stress-level");
+                if (stressLevel >= 4) {
+                    row.style.backgroundColor = "#c51717";
+                } else if (stressLevel == 3) {
+                    row.style.backgroundColor = "#f7d219";
+                } else {
+                    row.style.backgroundColor = "#65a512";
+                }
+            }
+            
+            // Filter data rows based on task
+            var filterSelect = document.getElementById("task-filter");
+            filterSelect.addEventListener("change", function() {
+                var selectedValue = filterSelect.value.toLowerCase();
+                for (var i = 0; i < dataRows.length; i++) {
+                    var row = dataRows[i];
+                    var task = row.getAttribute("data-task").toLowerCase();
+                    if (selectedValue === "all" || task.includes(selectedValue)) {
+                        row.style.display = "table-row";
+                    } else {
+                        row.style.display = "none";
+                    }
+                }
+            });
+
+            // Add click event listeners to header cells for sorting
+            var headerCells = document.querySelectorAll("#analysisTable1 th");
+            headerCells.forEach(cell => {
+                cell.addEventListener("click", () => {
+                    sortTable(analysisTable[0], cell.cellIndex);
+                });
+            });
+            // Apply sorting to the table initially (by the "Time" column in ascending order)
+            var headerCells = analysisTable.find("th");
+            var timeHeaderCell = headerCells.filter("[data-key='time']");
+            sortTable(analysisTable[0], timeHeaderCell.index());
+
+
+
+            // VTFinalScene()
+
+           
+        })
+
+        .catch(error => console.log(error));
+}
+
+// Helper function to create a header cell with sorting functionality
+function createHeaderCell(text, key) {
+    var cell = $("<th>").text(text);
+    cell.attr("data-key", key);
+    return cell;
+}
+
+// Function to sort the table based on the clicked header cell
+function sortTable(table, columnIndex) {
+    var rows = Array.from(table.rows).slice(1); // Exclude header row
+    var sortOrder = 1;
+    var headerCell = table.rows[0].cells[columnIndex];
+    var headerKey = headerCell.getAttribute("data-key");
+
+    // Toggle sort order and update arrow indicator
+    if (headerCell.classList.contains("asc")) {
+        headerCell.classList.remove("asc");
+        headerCell.classList.add("desc");
+        sortOrder = -1;
+    } else {
+        headerCell.classList.remove("desc");
+        headerCell.classList.add("asc");
+    }
+
+    // Perform sorting based on the column values
+    rows.sort((a, b) => {
+        var aValue = a.cells[columnIndex].textContent;
+        var bValue = b.cells[columnIndex].textContent;
+
+        // Custom comparison logic for time columns (convert to seconds)
+        if (headerKey === "time" || headerKey === "time_spent" || headerKey === "time_accumulation") {
+            aValue = convertTimeToSeconds(aValue);
+            bValue = convertTimeToSeconds(bValue);
+        }
+
+        if (aValue > bValue) {
+            return sortOrder;
+        } else if (aValue < bValue) {
+            return -sortOrder;
+        }
+        return 0;
+    });
+
+    // Reorder the rows based on the sorted order
+    for (var i = 0; i < rows.length; i++) {
+        table.appendChild(rows[i]);
+    }
+}
+
+// Helper function to convert time duration in the format HH:MM:SS to seconds
+function convertTimeToSeconds(time) {
+    var parts = time.split(":");
+    var hours = parseInt(parts[0]);
+    var minutes = parseInt(parts[1]);
+    var seconds = parseInt(parts[2]);
+    return (hours * 3600) + (minutes * 60) + seconds;
+}
+
+
+
+
+
+
+
+
+
+function VTFinalScene() {
+  fetch("/finalVT")
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        // Update the analysis table with data
+        var analysisTableScene = $("#analysisTableScene");
+        analysisTableScene.empty(); // Clear the table before updating
+
+        // Append the table headers
+        var thead = $("<thead class='sticky-header'>");
+        var headerRow1 = $("<tr>");
+        headerRow1.append($("<th rowspan='2'>").text("Scene"));
+        headerRow1.append($("<th rowspan='2'>").text("Total Time in Scene"));
+        headerRow1.append($("<th rowspan='2'>").text("Avg Stress"));
+        headerRow1.append($("<th colspan='7'>").text("Activity"));
+        var headerRow2 = $("<tr>");
+        headerRow2.append($("<th scope='col'>").text("Time"));
+        headerRow2.append($("<th scope='col'>").text("Asset"));
+        headerRow2.append($("<th scope='col'>").text("Event"));
+        headerRow2.append($("<th scope='col'>").text("Task"));
+        headerRow2.append($("<th scope='col'>").text("Stress Lv"));
+        headerRow2.append($("<th scope='col'>").text("Time Spent"));
+        headerRow2.append($("<th scope='col'>").text("Time Accumulation"));
+        thead.append(headerRow1, headerRow2);
+        analysisTableScene.append(thead);
+
+        // Iterate over data and append rows to the table
+        data.forEach(function (sceneData) {
+            const numActivities = sceneData.activities.length;
+
+            sceneData.activities.forEach(function (activity, index) {
+                const row = $("<tr>");
+                if (index === 0) {
+                    row.append($("<td rowspan='" + numActivities + "'>").text(sceneData.scene));
+                    row.append($("<td rowspan='" + numActivities + "'>").text(sceneData.total_time_in_scene));
+                    row.append($("<td rowspan='" + numActivities + "'>").text(sceneData.avg_stress));
+                }
+
+                row.append($("<td>").text(activity.time));
+                row.append($("<td>").text(activity.asset));
+                row.append($("<td>").text(activity.events));
+                row.append($("<td>").text(activity.task));
+                row.append($("<td>").text(activity.stress_level));
+                row.append($("<td>").text(activity.time_spent));
+                row.append($("<td>").text(activity.time_accumulation));
+
+                analysisTableScene.append(row);
+            });
+        });
+
+        analysisTableScene.show(); // Display the table
+
+    })
+    .catch(error => console.log(error));
+}
+
+
+
+
+
+function VTFinalSceneGraph() {
+  fetch("/finalVT")
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        // Update the analysis table with data
+        var analysisTableScene = $("#analysisTableSceneGraph");
+        analysisTableScene.empty(); // Clear the table before updating
+
+        // Append the table headers
+        var thead = $("<thead class='sticky-header'>");
+        var headerRow = $("<tr>");
+        headerRow.append($("<th>").text("Scene"));
+        headerRow.append($("<th>").text("Total Time in Scene"));
+        headerRow.append($("<th>").text("Avg Stress"));
+        thead.append(headerRow);
+        analysisTableScene.append(thead);
+
+        // Iterate over data and append rows to the table
+        data.forEach(function (sceneData) {
+            const row = $("<tr>");
+            row.append($("<td>").text(sceneData.scene));
+            row.append($("<td>").text(sceneData.total_time_in_scene));
+            row.append($("<td>").text(sceneData.avg_stress));
+            analysisTableScene.append(row);
+        });
+
+        generateChart(0, 2, 'line');
+
+        analysisTableScene.show(); // Display the table
+
+    })
+    .catch(error => console.log(error));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// Analyze button click event handler
+function analyzeData() {
+    const userSelect = document.getElementById('user-select');
+    const selectedUser = userSelect.value;
+    const dateSelect = document.getElementById('date-select');
+    const selectedDate = dateSelect.value;
+
+    if (selectedUser && selectedDate) {
+        retrieveData(selectedUser, selectedDate);
+        singleAnalysis();
+    } else {
+        console.log('Please select a user and a date');
+    }
+
+
+}
+
+      function singleAnalysis() {
+      // Show the analysis body all
+      var analysis = document.getElementById('bodyAnalysis');
+      analysis.style.display = 'block';
+      
+      }
+
+      
+
+
+
+
+
+    function downloadCSV(tableId, customFilename) {
+      // Get table data
+      var table = document.getElementById(tableId);
+      var rows = table.querySelectorAll("tr");
+      var csvContent = "";
+
+  // Loop through table rows
+  for (var i = 0; i < rows.length; i++) {
+    var cells = rows[i].querySelectorAll("td, th");
+    var rowArray = [];
+
+    // Loop through row cells
+    for (var j = 0; j < cells.length; j++) {
+      var cellText = cells[j].innerText.replace(/"/g, '""');
+      rowArray.push('"' + cellText + '"');
+    }
+
+    // Join row cells into a CSV row and add to CSV content
+    csvContent += rowArray.join(",") + "\n";
+  }
+
+  // Get current date and time
+  const now = new Date();
+  const selectedUser = document.getElementById("user-select").value;
+  const selectedDate = document.getElementById("date-select").value;
+  // const user = user;
+  // const date = date;
+  const dateStr = now.toISOString().substring(0, 10);
+  const timeStr = now.toTimeString().substring(0, 8).replace(/:/g, '-');
+  // const filename = customFilename ? customFilename : `VT_MonitoringData-${selectedDate}-${user}.csv`;
+  const filename = customFilename + `-${selectedDate}-${selectedUser}.csv`;
+
+  // Create CSV file
+  const link = document.createElement("a");
+  link.setAttribute("href", "data:text/csv;charset=utf-8," + encodeURIComponent(csvContent));
+  link.setAttribute("download", filename);
+  link.click();
+}
+
+
+
+  </script>
+
+
+
+
+
+    <!-- body -->
+
+
+  <div id="bodyAnalysis" style="display: none;">
+
+    <div>
+<button style="margin-bottom: 15px; background-color: rgb(128, 210, 73);" onclick="window.location.href='{{ url_for('singleAnalysis') }}#Monitor'">Monitoring Table</button>
+<button style="margin-bottom: 15px; background-color: rgb(128, 210, 73)" onclick="window.location.href='{{ url_for('singleAnalysis') }}#Single'">Single Analysis Table</button>
+<button style="margin-bottom: 15px; background-color: rgb(128, 210, 73)" onclick="window.location.href='{{ url_for('singleAnalysis') }}#Scene'">Analysis Based on Scene</button>
+<button style="margin-bottom: 15px; background-color: rgb(128, 210, 73)" onclick="window.location.href='{{ url_for('singleAnalysis') }}#Graph'">Graph Representation</button>
+<button style="margin-bottom: 15px; background-color: rgb(128, 210, 73)" onclick="window.location.href='{{ url_for('singleAnalysis') }}#Glossary'">Glossary</button>
+
+    </div>
+
+
+
+
+<!-- monitoring data -->
+
+
+    <div>
+      <h2 style="
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      background-color: rgb(214, 214, 214);
+      margin-top:15px;
+     " id="Monitor">
+     Monitoring Data</h2>
+  </div>
+
+
+
+      <div class="scrollable-table">
+        <table id="my-table">
+          <tbody>
+            <tbody id="data-table"></tbody>
+          </tbody>
+        </table>
+      </div>
+
+
+
+
+<button style="margin-bottom: 100px; margin-top: 50px;" onclick="downloadCSV('data-table', 'GVT_MonitoringData')">Download CSV</button>
+<script>
+  </script>
+
+
+
+
+
+
+<!-- Analysis -->
+
+<div>
+  <h2 style="
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background-color: rgb(214, 214, 214);
+  height: 50px;
+  margin-top:0px;
+ " id="Single">
+ Single Analysis</h2>
+</div>
+
+
+
+<div>
+  <label for="task-filter">Filter by Task:</label>
+  <select style="margin-bottom: 15px;" id="task-filter">
+    <option value="all">All</option>
+    <option value="success">Success</option>
+    <option value="fail">Fail</option>
+    <option value="correct">correct</option>
+    <option value="incorrect">incorrect</option>
+  </select>
+</div>
+
+
+
+<div class="scrollable-table2">
+  <table id="analysisTable1">
+  </table>
+</div>
+
+
+
+
+<form class="right">
+<div class="color-box red"></div>
+<div class="color-label">High Stress Lv</div>
+<div class="color-box yellow"></div>
+<div class="color-label">Medium Stress Lv</div>
+<div class="color-box green"></div>
+<div class="color-label">Low Stress Lv</div>
+</form>
+
+<button class="nomargintop" onclick="downloadCSV('analysisTable1', 'GVT_SingleAnalysis')">Download CSV</button>
+
+
+
+
+
+
+
+
+<!-- Analysis based scene -->
+<div>
+  <h2 style="
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background-color: rgb(214, 214, 214);
+  height: 50px;
+  margin-top:30px;
+ " id="Scene">
+ Analysis Based on Scene</h2>
+</div>
+
+
+<div class="scrollable-table3">
+  <table id="analysisTableScene">
+    <thead class="sticky-header">
+      <tr>
+        <th rowspan="2">Scene</th>
+        <th rowspan="2">Total Time in Scene</th>
+        <th rowspan="2">Avg Stress</th>
+        <th colspan="7">Activity</th>
+      </tr>
+      <tr>
+        <th scope="col">Time</th>
+        <th scope="col">Asset</th>
+        <th scope="col">Event</th>
+        <th scope="col">Task</th>
+        <th scope="col">Stress Lv</th>
+        <th scope="col">Time Spent</th>
+        <th scope="col">Time Accumulation</th>
+      </tr>
+    </thead>
+    <tbody id="analysisTableSceneBody">
+      <!-- Data rows will be dynamically inserted here -->
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+<button class="btn-primary" id="export-btn">Download xls</button>
+
+<!-- 
+<button id="export-btn">Export to XLS</button> -->
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#export-btn").click(function() {
+        // Get the HTML table element
+        var htmlTable = document.getElementById("analysisTableScene");
+
+        // Convert the HTML table to a worksheet in a new XLS workbook
+        var workbook = XLSX.utils.table_to_book(htmlTable);
+
+        // Generate the XLS file
+        var xlsFile = XLSX.write(workbook, {bookType: 'xls', type: 'binary'});
+
+        // Convert the XLS file to a Blob object
+        var blob = new Blob([stringToArrayBuffer(xlsFile)], {type: 'application/vnd.ms-excel'});
+
+        const selectedUser = document.getElementById("user-select").value;
+        const selectedDate = document.getElementById("date-select").value;
+
+        // Create a link to download the XLS file with a filename using the current date and time
+        var filename = 'GVT_SingleAnaLysisBasedOnScene-' + `${selectedDate}-${selectedUser}.xls`;
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = filename;
+        a.click();
+      });
+
+      function getCurrentDateTime() {
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = now.getMonth() + 1;
+        var day = now.getDate();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+        return year + '-' + padNumber(month) + '-' + padNumber(day) + '--' + padNumber(hours) + '-' + padNumber(minutes) + '-' + padNumber(seconds);
+      }
+
+      function padNumber(number) {
+        return number.toString().padStart(2, '0');
+      }
+
+      function stringToArrayBuffer(string) {
+        var buffer = new ArrayBuffer(string.length);
+        var view = new Uint8Array(buffer);
+        for (var i = 0; i < string.length; i++) {
+          view[i] = string.charCodeAt(i) & 0xff;
+        }
+        return buffer;
+      }
+    });
+  </script>
+
+
+
+
+ <!-- ========== graph======= -->
+
+
+<!-- graph representation -->
+<div>
+  <h2 style="
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background-color: rgb(214, 214, 214);
+  height: 50px;
+  margin-top:30px;
+ " id="Graph">
+ Graph Representation</h2>
+</div>
+
+
+
+
+
+<!-- <div class="scrollable-table3"> -->
+  <div hidden class="scrollable-table3">
+  <table id="analysisTableSceneGraph">
+    <!-- The table will be generated dynamically -->
+  </table>
+</div>
+
+
+
+<form>
+  
+  
+  <label for="yAxisColumn">Y-Axis Column:</label>
+  <select class="space" id="yAxisColumn">
+      <option value="2">Stress Lv</option>
+      <option value="1">Total Time</option>
+  </select>
+
+  <label for="xAxisColumn">X-Axis Column:</label>
+  <select class="space" id="xAxisColumn">
+      <option value="0">Scene</option>
+      <option value="1">Total Time</option>
+  </select>
+  
+  <label for="chartType">Chart Type:</label>
+  <select class="space" id="chartType">
+      <option value="line">Line</option>
+      <option value="bar">Bar</option>
+      <!-- <option value="pie">Pie</option> -->
+  </select>
+  
+ <button type="button" onclick="generateChart(document.getElementById('xAxisColumn').value, document.getElementById('yAxisColumn').value, document.getElementById('chartType').value)">Generate Chart</button>
+
+
+
+</form>
+
+
+
+<canvas class="marginbawah" id="myChart"></canvas>
+<script>
+  window.onload = function() {
+  generateChart(0, 2, 'line');
+  // generateChart();
+};
+</script>
+
+
+
+<script>
+
+function resetChart(){
+  if (myChart) {
+  myChart.destroy();
+}
+}
+
+
+
+
+
+
+
+
+
+var myChart;
+
+function generateChart(xAxis, yAxis, chartType) {
+
+// Retrieve table data
+var table = document.getElementById("analysisTableSceneGraph");
+var data = [];
+for (var i = 1; i < table.rows.length; i++) {
+  var row = table.rows[i];
+  var xValue = row.cells[xAxis].innerText;
+  var yValue = row.cells[yAxis].innerText;
+
+  // Convert time string to seconds if applicable
+  if (xAxis === "1") {
+    var timeParts = xValue.split(":");
+    var hours = parseInt(timeParts[0]);
+    var minutes = parseInt(timeParts[1]);
+    var seconds = parseInt(timeParts[2]);
+    var totalTimeInSeconds = hours * 3600 + minutes * 60 + seconds;
+    xValue = totalTimeInSeconds;
+  } else if (yAxis === "1") {
+    var timeParts = yValue.split(":");
+    var hours = parseInt(timeParts[0]);
+    var minutes = parseInt(timeParts[1]);
+    var seconds = parseInt(timeParts[2]);
+    var totalTimeInSeconds = hours * 3600 + minutes * 60 + seconds;
+    yValue = totalTimeInSeconds;
+  }
+
+  data.push({ xValue: xValue, yValue: yValue });
+}
+
+// Sort data based on x-axis values if applicable
+if (xAxis === "1" && yAxis === "2") {
+  data.sort(function (a, b) {
+    return a.xValue - b.xValue;
+  });
+}
+
+// Prepare labels and values for the chart
+var xLabelStr = xAxis === "1" ? "Total Time":"Scene";
+var yLabelStr = yAxis === "1" ? "Total Time" : "Stress Level";
+
+
+// Prepare labels and values for the chart
+var xLabel = xAxis === "1" ? "Total Time (hh:mm:ss)" : "X-Axis";
+var yLabel = yAxis === "1" ? "Total Time (hh:mm:ss)" : "Y-Axis";
+var labels = data.map(function (item) {
+  return xAxis === "1" ? formatTime(item.xValue) : item.xValue;
+});
+var values = data.map(function (item) {
+  return item.yValue;
+});
+
+
+// Clear the old chart if it exists
+if (myChart) {
+  myChart.destroy();
+}
+
+// Determine the background color and border color based on the axis values
+var backgroundColor, borderColor;
+if (xAxis === "0" && yAxis === "2") {
+  backgroundColor = "rgba(11, 156, 49, 0.2)";
+  borderColor = "rgba(11, 156, 49, 1)";
+} else if (xAxis === "0" && yAxis === "1") {
+  backgroundColor = "rgba(255, 165, 0, 0.2)";
+  borderColor = "rgba(255, 165, 0, 1)";
+} else if (xAxis === "1" && yAxis === "2") {
+  backgroundColor = "rgba(255, 99, 132, 0.2)";
+  borderColor = "rgba(255, 99, 132, 1)";
+} else {
+  // Default colors
+  backgroundColor = "rgba(11, 156, 49, 0.2)";
+  borderColor = "rgba(11, 156, 49, 1)";
+}
+
+
+// Create the chart
+var ctx = document.getElementById("myChart").getContext("2d");
+myChart = new Chart(ctx, {
+type: chartType,
+data: {
+  labels: labels,
+  datasets: [
+    {
+      label: yLabelStr,
+      data: values,
+      borderColor: borderColor,
+      borderWidth: chartType === 'line' ? '2' : '1',
+      fill: chartType === 'line' ? false : undefined,
+      backgroundColor: backgroundColor,
+    },
+  ],
+},
+options: {
+  scales: {
+    x: {
+      scaleLabel: {
+        display: true,
+        labelString: xLabel,
+      },
+    },
+    y: {
+      ticks: {
+        callback: function (value) {
+          if (yAxis === "1") {
+            return formatTime(value);
+          } else {
+            return value;
+          }
+        },
+      },
+      scaleLabel: {
+        display: true,
+        labelString: yLabel,
+      },
+    },
+  },
+  plugins: {
+      title: {
+        font: {
+          size: 25},
+        display: true,
+        text: yLabelStr + ' by ' + xLabelStr,
+        padding: {
+           bottom: 25
+        }
+      }
+    }
+},
+});
+}
+
+// Helper function to format time in hh:mm:ss
+function formatTime(seconds) {
+var hours = Math.floor(seconds / 3600);
+var minutes = Math.floor((seconds % 3600) / 60);
+var remainingSeconds = seconds % 60;
+return (
+  hours.toString().padStart(2, "0") +
+  ":" +
+  minutes.toString().padStart(2, "0") +
+  ":" +
+  remainingSeconds.toString().padStart(2, "0")
+);
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+<!-- glossary -->
+
+<div>
+  <h2 style="
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background-color: rgb(214, 214, 214);
+  height: 50px;
+  margin-top:30px;
+ " id="Glossary">
+ Glossary</h2>
+</div>
+
+
+
+<div>
+<table class="glossary">
+<tr>
+  <th>Term</th>
+  <th>Definition</th>
+  <th>Formula</th>
+</tr>
+<tr>
+  <td>Time Spent</td>
+  <td>Represents the time elapsed between the current event and the next event in the game. It is calculated by finding the next event time and subtracting the current event time from it.</td>
+  <td>time_spent = (next_event_time - event_time).total_seconds()</td>
+</tr>
+<tr>
+  <td>Time Accumulation</td>
+  <td>Represents the time elapsed since the first event until the current event. It is calculated by subtracting the previous event time from the current event time, and adding the result to the total time accumulation.</td>
+  <td>time_accumulation = time_accumulation + (event_time - prev_event_time).total_seconds()</td>
+</tr>
+<tr>
+  <td>Total Time in Scene</td>
+  <td>Represents the total time spent in a particular scene. It is calculated by adding the time spent on each activity in that scene.</td>
+  <td>total_time_in_scene = sum(activity['time_spent'] for activity in data[scene]['activities'])</td>
+</tr>
+<tr>
+  <td>Avg Stress</td>
+  <td>Represents the the average stress when player play in the scene.</td>
+  <td>the sum of ((stress * time spent) in each activity) devided by total_time_in_scene </td>
+</tr>
+</table>
+
+
+</div>
+
+
+      <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+
+<script>
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function() {scrollFunction()};
+  
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      document.getElementById("myBtn").style.display = "block";
+    } else {
+      document.getElementById("myBtn").style.display = "none";
+    }
+  }
+  
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+  </script>
+    </body>
+
+
+
+
+
+
+<footer style="display: block;">
+  <p> <img src="{{ url_for('static', filename='images/se4gd.png') }}" 
+    alt="Footer Image" width="17" height="17" margin-top: "30px">
+    &copy; Arini Nur Rohmah       :]</p>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+    </html>
+
+
+
+
+    
