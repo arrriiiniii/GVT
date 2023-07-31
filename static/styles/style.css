@@ -1,0 +1,1144 @@
+
+/* body {
+  margin: 0;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+} */
+
+
+
+
+
+.topnav {
+  overflow: hidden;
+  background-color: #000000;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: rgb(214, 214, 214);
+  color: rgb(0, 0, 0);
+} 
+
+
+
+
+.centered-wrapper {
+    position: relative;
+    text-align: center;
+}
+
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Style the main menu */
+.dropdown {
+  overflow: hidden;
+  background-color: #000000;
+}
+
+.dropdown a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+
+  
+
+
+
+
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Style the dropdown content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: #fff;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+  color: #333;
+  font-weight: normal;
+  text-decoration: none;
+  display: block;
+  padding: 12px 16px;
+}
+
+.dropdown-content a:hover {
+  background-color: #f2f2f2;
+}
+
+
+.shortcut {
+  background-color: black;
+  color: black;
+  overflow: hidden;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+
+  
+}
+
+.shortcut a {
+  /* float: left; */
+  color:white;
+  text-align: center;
+  /* padding: 14px 16px; */
+  text-decoration: none;
+  font-size: 17px;
+  /* z-index: 1; */
+}
+
+
+.shortcut a:hover {
+  background-color: rgb(71, 171, 5);
+  color: black;
+}
+
+
+/* The navigation menu */
+.navbar {
+  overflow: hidden;
+  background-color: #000000;
+  z-index: 1;
+}
+
+/* Navigation links */
+.navbar a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  z-index: 1;
+}
+
+/* The subnavigation menu */
+.subnav {
+  float: left;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Subnav button */
+.subnav .subnavbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  z-index: 1;
+}
+
+/* Add a red background color to navigation links on hover */
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: rgb(71, 171, 5);
+  color: black;
+}
+
+/* Style the subnav content - positioned absolute */
+.subnav-content {
+  top: 47px;
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: rgb(71, 171, 5);
+  width: 100%;
+  height: 50px;
+
+  /* z-index: -1; */
+}
+
+/* Style the subnav links */
+.subnav-content a {
+  /* margin-top: 50px; */
+  top: 50px;
+  float: left;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  /* z-index: -1; */
+}
+
+/* Add a grey background color on hover */
+.subnav-content a:hover {
+  background-color: #26750e;
+  color: black;
+}
+
+/* When you move the mouse over the subnav container, open the subnav content */
+.subnav:hover .subnav-content {
+  display: block;
+}
+
+.navbar a.active {
+  background-color: rgb(214, 214, 214);
+  color: rgb(0, 0, 0);
+} 
+
+.active{
+  background-color: rgb(214, 214, 214);
+  color: rgb(0, 0, 0);
+}
+
+
+
+
+
+
+/* .button-primary-override {
+  border: 1px solid #5cb85c;
+  color: #5cb85c;
+  text-decoration:none;
+  cursor: pointer;
+  border-color: #5cb85c;
+}  
+
+.button-primary-override:hover {
+  background: rgba(0, 0, 0, 0.3);
+  color: #5cb85c;
+}    */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    /* padding: 0 20px 0 20px; */
+    text-align: center;
+    background: white;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    
+  }
+
+
+
+/* ################################################################ */
+
+
+.table-wrapper {
+height: 300px;
+overflow: scroll;
+align-items: center;
+box-sizing: border-box;
+display: inline-block;
+vertical-align: middle;
+
+
+  }
+  
+  .table tbody tr:nth-child(even) {
+	background-color: #f2f2f2;
+  }
+  
+  .table tbody tr:nth-child(odd) {
+	background-color: #fff;
+  }
+
+  
+ 
+  
+
+/* Even rows */
+table#analysisTableScene tr.even td {
+  background-color: #f2f2f2;
+}
+
+/* Odd rows */
+table#analysisTableScene tr.odd td {
+  background-color: #fff;
+}
+
+/* Odd scene */
+table#analysisTableScene td[rowspan][class^="odd"] {
+  background-color: #fff;
+}
+
+/* Even scene */
+table#analysisTableScene td[rowspan][class^="even"] {
+  background-color: #f2f2f2;
+}
+
+
+
+
+
+  
+
+
+
+  /* new */
+
+  table {
+	border-collapse: collapse;
+	width: 100%;
+	align-items: center;
+  /* margin-bottom: 10px; */
+  }
+
+
+
+  th, td {
+  position: sticky;
+  vertical-align: middle;
+  /* text-align: center; */
+	text-align: left;
+	padding: 8px;
+	border-bottom: 1px solid #ddd;
+
+
+  
+  }
+
+
+  thead th {
+    position: sticky;
+    top: 0;
+    background-color: #ddd;
+  }
+
+
+
+tbody th {
+  /* position: sticky; */
+  left: 0;
+  background-color: rgb(214, 214, 214);
+}
+
+tbody th.sub-header {
+  /* position: sticky; */
+  top: 40px; /* adjust as needed */
+  background-color: #f2f2f2;
+}
+
+tbody th.sub-header > td {
+  /* position: sticky; */
+  border-bottom: none;
+}
+
+
+tbody td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  /* border-left: 1px solid #ddd; */
+
+}
+
+
+
+tbody td:first-child {
+  border-left: 1px solid rgb(214, 214, 214);
+}
+
+
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background-color: rgb(214, 214, 214);
+  z-index: 1;
+}
+
+
+
+.sticky-header th[colspan] {
+  border-right: 1px solid rgb(214, 214, 214);
+}
+
+
+
+  th[colspan="7"] {
+    text-align: center;
+    border-bottom: rgb(255, 255, 255);
+
+  }
+
+
+  th {
+	position: sticky;
+	top: 0;
+	background-color: rgb(214, 214, 214);
+  left: 0;
+  z-index: 1;
+  /* text-align: center; */
+  }
+
+
+
+
+
+  /* Add styles for the scrollable container */
+  .scrollable-table {
+	height: 400px;
+	overflow-y: auto;
+  font-size: 14px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  }
+
+
+  .scrollable-table2 {
+    height: 450px;
+    overflow-y: auto;
+    font-size: 14px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    }
+
+
+
+    .scrollable-table3 {
+      height: 550px;
+      overflow-y: auto;
+      font-size: 14px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 90%;
+      }
+
+
+    .scrollable-table4 {
+      height: 400px;
+      overflow-y: auto;
+      margin-bottom: 50px;
+      /* width: 85%; */
+      width: 90%;
+      font-size: 14px;
+      margin-left: auto;
+      margin-right: auto;
+
+    }
+
+
+    .scrollable-table5 {
+      height: 450px;
+      overflow-y: auto;
+      width: 90%;
+      font-size: 14px;
+      margin-left: auto;
+      margin-right: auto;
+      /* width: 70%; */
+      }
+
+      .scrollable-table6 {
+        height: 350px;
+        overflow-y: auto;
+        width: 90%;
+        font-size: 14px;
+        margin-left: auto;
+        margin-right: auto;
+        /* width: 70%; */
+        }
+
+
+        .scrollable-tablemulti {
+          height: 400px;
+          overflow-y: auto;
+          margin-bottom: 100px;
+          width: 90%;
+          font-size: 14px;
+          margin-left: auto;
+          margin-right: auto;
+    
+        }
+
+        .scrollableTableMulAnalysis {
+          height: 400px;
+          overflow-y: auto;
+          width: 70.2%;
+          font-size: 14px;
+          margin-left: auto;
+          margin-right: auto;
+          /* width: 70%; */
+          }
+  
+        
+
+
+  tr:nth-child(even) {
+    background-color: #fff;
+  }
+  tr:nth-child(odd) {
+    background-color: #f4f4f4;
+  }
+
+
+
+
+  .scrollable-table-header th {
+    position: sticky;
+    top: 0;
+    background-color: rgb(214, 214, 214);
+    left: 0;
+    z-index: 1;
+  }
+  
+
+
+  .page-container {
+    min-height: 100%;
+    position: relative;
+  }
+  
+  .content-wrap {
+    padding-bottom: 2.5rem; /* This should be the same height as your footer */
+  }
+
+
+
+  footer {
+  background-color: #000000;
+  color: #666; 
+    /* padding: 10px;  */
+  text-align: right;
+  height: 30px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+  padding-right: 30px;
+  z-index: 1;
+  /* margin-top: 500px; */
+  
+  
+  }
+
+
+  .footer2 {
+    margin-top: 100px;
+    text-align: center;
+    position: fixed;
+    bottom: 30px;
+    width: 100%;
+    z-index: 1;
+    /* margin-top: 500px; */
+    
+    
+    }
+
+
+
+  main {
+    margin-bottom: 500px;
+  }
+
+  .wrapper {
+    min-height: 100%;
+    height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
+    height: 100%;
+    margin: 0 auto -155px; /* the bottom margin is the negative value of the footer's height */
+}
+
+
+
+
+.footer, .push {
+    height: 155px; /* .push must be the same height as .footer */
+}
+
+
+  .footer {
+  background-color: #000000;
+  color: #666; 
+  /* padding: 10px;  */
+  text-align: right;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+  z-index: 1;
+  /* margin-top: 500px; */
+}
+
+  button{
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+
+  .btn-primary {
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+  }
+ 
+  .marginbawah{
+    margin-bottom: 100px;
+  }
+
+
+
+  .space{
+    margin-right: 30px;
+  }
+
+
+  .graph{
+    margin-top: 50px;
+    margin-bottom: 100px;
+    width: 50%;
+    font-size: 13px;
+    margin-left: auto;
+    /* margin-right: auto; */
+  }
+
+
+  .variableGraph{
+    margin-top: 70px;
+    margin-bottom: 50px;
+    width: 50%;
+    font-size: 13px;
+    margin-right: auto;
+    margin-left: auto;
+
+  }
+
+
+  .glossary{
+    /* margin-top: 50px; */
+    margin-bottom: 250px;
+    width: 75%;
+    font-size: 13px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+
+
+
+
+  .headerPart{
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: rgb(214, 214, 214);
+    height: 50px;
+    margin-top:30px
+
+  }
+
+
+  .red {
+    background-color: #c51717;
+  }
+  
+  .yellow {
+    background-color: #f7d219;
+  }
+  
+  .green {
+    background-color: #65a512;
+  }
+  
+
+.right{
+  width: 95%;
+  /* margin-right: 0px; */
+  text-align: right;
+  margin-top: 15px;
+  font-size: 12px;
+}
+
+
+.color-box {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  /* margin: 10px; */
+  border-radius: 5px;
+  margin-right: 0px;
+  
+}
+.color-box.red {
+  background-color: #c51717;
+}
+.color-box.yellow {
+  background-color: #f7d219;
+}
+.color-box.green {
+  background-color: #65a512;
+}
+.color-label {
+  display: inline-block;
+  margin: 10px;
+}
+
+
+.color-boxA {
+  /* display: inline-block; */
+  display: flex;
+  width: 130px;
+  height: 130px;
+  /* margin: 10px; */
+  border-radius: 50%;
+  /* margin-right: 0px; */
+
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 auto;
+  
+}
+
+.color-boxA.red {
+  background-color: #c51717;
+}
+.color-boxA.yellow {
+  background-color: #f7d219;
+}
+.color-boxA.green {
+  background-color: #65a512;
+}
+.color-label {
+  display: inline-block;
+  margin: 10px;
+}
+
+
+.color-boxB {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  /* margin: 10px; */
+  border-radius: 50%;
+  /* margin-right: 0px; */
+  
+}
+
+.color-boxB.red {
+  background-color: #c51717;
+}
+.color-boxB.yellow {
+  background-color: #f7d219;
+}
+.color-boxB.green {
+  background-color: #65a512;
+}
+.color-label {
+  display: inline-block;
+  margin: 10px;
+  /* padding-left: 15px; */
+}
+
+.detail{
+  margin-right: 10px;
+  text-align: right;
+  margin-top: 15px;
+  font-size: 12px;
+}
+
+
+.flex1 {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  /* padding-right: 15px; */
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+}
+
+
+.flex {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  /* padding-right: 15px; */
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.nomargintop{
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+.margintop{
+  margin-top: 10px;
+  /* margin-bottom: 20px; */
+}
+
+
+  /* #################### new ############### */
+
+  .back-to-top {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 14px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 100px;
+  }
+  
+  .back-to-top:hover {
+    background-color: #555;
+  }
+
+
+  #pieChart{
+    /* max-width: 1000% !important; */
+    height: 13%;
+    /* width: 50%; */
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+
+  .legend-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+
+
+  
+  #pieChart .chartjs-render-monitor .chart-legend {
+    position: right;
+  }
+
+  #pieChart.overrides[pie].plugins.legend {
+    position: right;
+  }
+
+
+  /* ######## glossary ######## */
+
+  #glossary {
+    margin: 0;
+    padding: 0;
+  }
+  
+  #glossary ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #glossary li {
+    margin: 10px 0;
+  }
+  
+  #glossary section {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  #glossary h2 {
+    font-size: 1.2em;
+    margin-top: 0;
+  }
+  
+  #glossary p {
+    margin: 0;
+  }
+  
+
+
+
+
+
+  /* Style the button */
+#myBtn {
+  display: none; /* Hide the button initially */
+  position: fixed; /* Fixed position */
+  bottom: 25px; /* Place the button at the bottom of the page */
+  right: 10px; /* Place the button 30 pixels from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: rgb(75, 180, 6); /* Set a background color */
+  color: rgb(0, 0, 0); /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  /* margin-bottom: 100px; */
+}
+
+/* On hover */
+#myBtn:hover {
+  background-color: #26750e; /* Dark grey background */
+}
+
+  
+
+#myChart {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+
+#myChartDetail{
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+#myChartDetailTime{
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+
+#myChart2{
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 170px;
+  margin-bottom: 100px;
+}
+
+#chart{
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  margin-bottom: 150px;
+}
+
+#myChart3{
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 170px;
+  margin-bottom: 100px;
+}
+
+
+
+#Chart1{
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+#Chart2{
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+
+#Chart3{
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+
+
+.chart {
+  width: 49% !important;
+  height: 49% !important;
+  margin-top: 30px;
+  margin-bottom: 100px;
+}
+
+
+
+
+
+
+
+
+#selectedFiles li {
+  margin-top: -30px;
+  text-align: center;
+  padding-left: 0;
+  /* margin-bottom: 5px; */
+  list-style-position: inside;
+}
+#selectedFiles li:before {
+  margin-right: 5px;
+}
+#selectedFiles li button {
+  margin-left: 10px;
+}
+
+
+.marginTop{
+  margin-top: 50px;
+}
+
+
+
+/* #analysisTableSceneM{
+  width: 75%;
+} */
+
+
+
+
+.sort-arrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 4px;
+  vertical-align: middle;
+  border-top: 3px solid;
+  border-right: 3px solid transparent;
+  border-left: 3px solid transparent;
+  flex-shrink: 0; /* Prevents arrows from affecting column width */
+}
+
+.sort-arrow.asc {
+  border-top-color: #000;
+}
+
+.sort-arrow.desc {
+  border-top-color: #000;
+  transform: rotate(180deg);
+}
+
+#analysisTable1 th {
+  /* display: flex; */
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  /* align-items: center; */
+  /* font-size: small; */
+}
+
+#analysisTable1 td {
+  /* display: flex; */
+  justify-content: space-between;
+  /* align-items: center; */
+  /* font-size: small; */
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+
+
+
+#analysisTableScene th {
+  /* display: flex; */
+  justify-content: space-between;
+  /* border: 1px solid #ccc; */
+  /* align-items: center; */
+  /* font-size: small; */
+}
+
+#analysisTableScene td {
+  /* display: flex; */
+  justify-content: space-between;
+  /* align-items: center; */
+  /* font-size: small; */
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+
+
+.homeButton {
+  width: 150px;
+  height: 50px;
+  margin: 10px;
+}
+
+
+
+th[data-key]:after {
+  content: "";
+  display: inline-block;
+  margin-left: 5px;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
+  transition: transform 0.2s ease-in-out;
+}
+
+th.asc[data-key]:after {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #000;
+  transform: rotate(180deg);
+}
+
+th.desc[data-key]:after {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #000;
+}

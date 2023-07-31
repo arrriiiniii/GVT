@@ -1,0 +1,355 @@
+
+#nav {
+    list-style:none inside;
+    margin:0;
+    padding:0;
+    text-align:center;
+    }
+    #nav li {
+    display:block;
+    position:relative;
+    float:left;
+    background: black; /* menu background color */
+    }
+    #nav li a {
+    display:block;
+    padding:0;
+    text-decoration:none;
+    width:200px; /* this is the width of the menu items */
+    line-height:35px; /* this is the hieght of the menu items */
+    color:#ffffff; /* list item font color */
+    }
+    #nav li li a {font-size:80%;} /* smaller font size for sub menu items */
+    #nav li:hover {background:#003f20;} /* highlights current hovered list item and the parent list items when hovering over sub menues */
+    #nav ul {
+    position:absolute;
+    padding:0;
+    left:0;
+    display:none; /* hides sublists */
+    }
+    #nav li:hover ul ul {display:none;} /* hides sub-sublists */
+    #nav li:hover ul {display:block;} /* shows sublist on hover */
+    #nav li li:hover ul {
+    display:block; /* shows sub-sublist on hover */
+    margin-left:200px; /* this should be the same width as the parent list item */
+    margin-top:-35px; /* aligns top of sub menu with top of list item */
+    }
+
+
+.navbar {
+    overflow: hidden;
+    background-color: #333; 
+  }
+  
+  .navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .subnav {
+    float: left;
+    overflow: hidden;
+  }
+  
+  .subnav .subnavbtn {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+  
+  .navbar a:hover, .subnav:hover .subnavbtn {
+    background-color: red;
+  }
+  
+  .subnav-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: red;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  .subnav-content a {
+    float: left;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .subnav-content a:hover {
+    background-color: #eee;
+    color: black;
+  }
+  
+  .subnav:hover .subnav-content {
+    display: block;
+  }
+
+  /* Add your styles here */
+body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+title{
+    background: black;
+    padding: 20px;
+}
+
+header{
+    background: black;
+    padding: 35px;
+}
+section{
+    background: white;
+    color: gray;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+}
+div{
+    background: white;
+    margin: auto;
+    width: 100px;
+}
+/* ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+} */
+/* li{
+    display: inline-block;
+    color: white;
+    margin-right: 20px;
+    height: 35px;
+} */
+footer{
+    background: black;
+    padding: 10px 20px;
+}
+a:link {
+    color: green;
+    background-color: transparent;
+    text-decoration: none;
+}
+  
+a:visited {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+  
+a:hover {
+    color: rgb(183, 181, 181);
+    background-color: transparent;
+    text-decoration: underline;
+}
+  
+a:active {
+    color: rgb(60, 60, 60);
+    background-color: transparent;
+    text-decoration: underline;
+}
+  
+li.selected a { 
+    color: #969595; 
+}
+
+h1{
+    /* background-color: black; */
+    text-align: center;
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: #333; 
+  }
+  
+  .navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .subnav {
+    float: left;
+    overflow: hidden;
+  }
+  
+  .subnav .subnavbtn {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+  
+  .navbar a:hover, .subnav:hover .subnavbtn {
+    background-color: red;
+  }
+  
+  .subnav-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: red;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  .subnav-content a {
+    float: left;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .subnav-content a:hover {
+    background-color: #eee;
+    color: black;
+  }
+  
+  .subnav:hover .subnav-content {
+    display: block;
+  }
+
+
+
+
+/* ############### table rt ########################## */
+
+
+.scrollingtable {
+align-items: center;
+box-sizing: border-box;
+display: inline-block;
+vertical-align: middle;
+overflow: hidden;
+width: 90%; /*set table width here if using fixed value*/
+/*min-width: 100%;*/ /*set table width here if using %*/
+height: 500px; /*set table height here; can be fixed value or %*/
+/*min-height: 104px;*/ /*if using % height, make this at least large enough to fit scrollbar arrows + captions + thead*/
+font-family: Verdana, Tahoma, sans-serif;
+font-size: 15px;
+line-height: 20px;
+padding-top: 20px; /*this determines top caption height*/
+padding-bottom: 20px; /*this determines bottom caption height*/
+text-align: center;
+  
+}
+.scrollingtable * {box-sizing: border-box;}
+.scrollingtable > div {
+position: relative;
+border-top: 1px solid black; /*top table border*/
+height: 100%;
+padding-top: 20px; /*this determines column header height*/
+}
+.scrollingtable > div:before {
+top: 0;
+/*background: rgb(39, 120, 36); /*column header background color*/
+}
+.scrollingtable > div:before,
+.scrollingtable > div > div:after {
+content: "";
+position: absolute;
+z-index: -1;
+width: 500%;
+height: 50%;
+left: 0;
+}
+.scrollingtable > div > div {
+/*min-height: 43px;*/ /*if using % height, make this at least large enough to fit scrollbar arrows*/
+max-height: 100%;
+overflow: scroll; /*set to auto if using fixed or % width; else scroll*/
+overflow-x: hidden;
+border: 1px solid black; /*border around table body*/
+}
+.scrollingtable > div > div:after {background: white;} /*match page background color*/
+.scrollingtable > div > div > table {
+width: 100%;
+border-spacing: 0;
+margin-top: -20px; /*inverse of column header height*/
+/*margin-right: 17px;*/ /*uncomment if using % width*/
+}
+.scrollingtable > div > div > table > caption {
+position: absolute;
+top: -20px; /*inverse of caption height*/
+margin-top: -1px; /*inverse of border-width*/
+width: 100%;
+font-weight: bold;
+text-align: center;
+}
+.scrollingtable > div > div > table > * > tr > * {padding: 0;}
+.scrollingtable > div > div > table > thead {
+vertical-align: bottom;
+white-space: nowrap;
+text-align: center;
+}
+.scrollingtable > div > div > table > thead > tr > * > div {
+display: inline-block;
+padding: 0 6px 0 6px; /*header cell padding*/
+}
+.scrollingtable > div > div > table > thead > tr > :first-child:before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+height: 20px; /*match column header height*/
+border-left: 1px solid black; /*leftmost header border*/
+}
+.scrollingtable > div > div > table > thead > tr > * > div[label]:before,
+.scrollingtable > div > div > table > thead > tr > * > div > div:first-child,
+.scrollingtable > div > div > table > thead > tr > * + :before {
+position: absolute;
+top: 0;
+white-space: pre-wrap;
+color: rgb(0, 0, 0); /*header row font color*/
+}
+.scrollingtable > div > div > table > thead > tr > * > div[label]:before,
+.scrollingtable > div > div > table > thead > tr > * > div[label]:after {content: attr(label);}
+.scrollingtable > div > div > table > thead > tr > * + :before {
+content: "";
+display: block;
+min-height: 20px; /*match column header height*/
+padding-top: 1px;
+border-left: 1px solid black; /*borders between header cells*/
+}
+.scrollingtable .scrollbarhead {float: right;}
+.scrollingtable .scrollbarhead:before {
+position: absolute;
+width: 100px;
+top: -1px; /*inverse border-width*/
+background: white; /*match page background color*/
+}
+.scrollingtable > div > div > table > tbody > tr:after {
+content: "";
+display: table-cell;
+position: relative;
+padding: 0;
+border-top: 1px solid black;
+top: -1px; /*inverse of border width*/
+}
+.scrollingtable > div > div > table > tbody {vertical-align: top;}
+.scrollingtable > div > div > table > tbody > tr {background: white;}
+.scrollingtable > div > div > table > tbody > tr > * {
+border-bottom: 1px solid black;
+padding: 0 6px 0 6px;
+height: 20px; /*match column header height*/
+}
+.scrollingtable > div > div > table > tbody:last-of-type > tr:last-child > * {border-bottom: none;}
+.scrollingtable > div > div > table > tbody > tr:nth-child(even) {background: gainsboro;} /*alternate row color*/
+.scrollingtable > div > div > table > tbody > tr > * + * {border-left: 1px solid black;} /*borders between body cells*/
