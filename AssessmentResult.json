@@ -1,0 +1,108 @@
+{
+    "overall_stress": 2.8,
+    "overall_time": "00:01:28",
+    "details": [
+        {
+            "scene": "Acts",
+            "avg_total_time": "00:00:09",
+            "avg_stress_level": 3.7,
+            "total_users": 3
+        },
+        {
+            "scene": "Acts game 1",
+            "avg_total_time": "00:00:03",
+            "avg_stress_level": 3.7,
+            "total_users": 3
+        },
+        {
+            "scene": "Acts game 2",
+            "avg_total_time": "00:00:03",
+            "avg_stress_level": 0.5,
+            "total_users": 2
+        },
+        {
+            "scene": "Acts game 3",
+            "avg_total_time": "00:00:02",
+            "avg_stress_level": 3.0,
+            "total_users": 2
+        },
+        {
+            "scene": "Calculation game 1",
+            "avg_total_time": "00:00:05",
+            "avg_stress_level": 3.0,
+            "total_users": 2
+        },
+        {
+            "scene": "Calculation game 2",
+            "avg_total_time": "00:00:01",
+            "avg_stress_level": 3.5,
+            "total_users": 2
+        },
+        {
+            "scene": "Calculation game 3",
+            "avg_total_time": "00:00:08",
+            "avg_stress_level": 3.0,
+            "total_users": 1
+        },
+        {
+            "scene": "Closing Scene",
+            "avg_total_time": "00:00:00",
+            "avg_stress_level": 0.0,
+            "total_users": 3
+        },
+        {
+            "scene": "Coloring",
+            "avg_total_time": "00:00:05",
+            "avg_stress_level": 5.0,
+            "total_users": 2
+        },
+        {
+            "scene": "Main Scene",
+            "avg_total_time": "00:00:08",
+            "avg_stress_level": 3.3,
+            "total_users": 3
+        },
+        {
+            "scene": "Matching Shape game 1",
+            "avg_total_time": "00:00:10",
+            "avg_stress_level": 2.5,
+            "total_users": 2
+        },
+        {
+            "scene": "Matching Shape game 2",
+            "avg_total_time": "00:00:12",
+            "avg_stress_level": 2.5,
+            "total_users": 2
+        },
+        {
+            "scene": "Matching Shape game 3",
+            "avg_total_time": "00:00:07",
+            "avg_stress_level": 3.0,
+            "total_users": 2
+        },
+        {
+            "scene": "Matching Shape game 4",
+            "avg_total_time": "00:00:02",
+            "avg_stress_level": 3.0,
+            "total_users": 2
+        },
+        {
+            "scene": "Matching Shape game 5",
+            "avg_total_time": "00:00:04",
+            "avg_stress_level": 3.0,
+            "total_users": 2
+        },
+        {
+            "scene": "Opening Scene",
+            "avg_total_time": "00:00:03",
+            "avg_stress_level": 2.3,
+            "total_users": 3
+        },
+        {
+            "scene": "Shapes Scene",
+            "avg_total_time": "00:00:06",
+            "avg_stress_level": 2.3,
+            "total_users": 3
+        }
+    ]
+}

@@ -1,0 +1,1797 @@
+[
+    {
+        "Julia/2023-07-18": [
+            {
+                "scene": "Opening Scene",
+                "total_time_in_scene": "00:00:02",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:09:31",
+                        "stress_level": "5",
+                        "scene": "Opening Scene",
+                        "asset": "Button_mulai",
+                        "events": "Player goes to main menu",
+                        "task": "",
+                        "time_spent": "00:00:02",
+                        "time_accumulation": "00:00:00"
+                    }
+                ],
+                "avg_stress": 5
+            },
+            {
+                "scene": "Main Scene",
+                "total_time_in_scene": "00:00:04",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:09:33",
+                        "stress_level": "5",
+                        "scene": "Main Scene",
+                        "asset": "Button_acts",
+                        "events": "Player goes to acts scene",
+                        "task": "",
+                        "time_spent": "00:00:02",
+                        "time_accumulation": "00:00:02"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:13",
+                        "stress_level": "1",
+                        "scene": "Main Scene",
+                        "asset": "Button_shapes",
+                        "events": "Player goes to study shape menu",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:42"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:53",
+                        "stress_level": "1",
+                        "scene": "Main Scene",
+                        "asset": "Button_keluar",
+                        "events": "Player goes to closing scene",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:22"
+                    }
+                ],
+                "avg_stress": 3
+            },
+            {
+                "scene": "Acts game 1",
+                "total_time_in_scene": "00:00:06",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:09:35",
+                        "stress_level": "1",
+                        "scene": "Acts game 1",
+                        "asset": "a1",
+                        "events": "Player clicks option a",
+                        "task": "success",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:00:04"
+                    },
+                    {
+                        "time": "2023-07-18 11:09:35",
+                        "stress_level": "1",
+                        "scene": "Acts game 1",
+                        "asset": "b1",
+                        "events": "Player clicks option b",
+                        "task": "failed",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:04"
+                    },
+                    {
+                        "time": "2023-07-18 11:09:36",
+                        "stress_level": "1",
+                        "scene": "Acts game 1",
+                        "asset": "d1",
+                        "events": "Player clicks option d",
+                        "task": "success",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:00:05"
+                    },
+                    {
+                        "time": "2023-07-18 11:09:36",
+                        "stress_level": "1",
+                        "scene": "Acts game 1",
+                        "asset": "c1",
+                        "events": "Player clicks option c",
+                        "task": "failed",
+                        "time_spent": "00:00:04",
+                        "time_accumulation": "00:00:05"
+                    },
+                    {
+                        "time": "2023-07-18 11:09:40",
+                        "stress_level": "1",
+                        "scene": "Acts game 1",
+                        "asset": "Button next1",
+                        "events": "Player is in acts game scene 2",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:09"
+                    }
+                ],
+                "avg_stress": 1
+            },
+            {
+                "scene": "Acts game 2",
+                "total_time_in_scene": "00:00:06",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:09:41",
+                        "stress_level": "1",
+                        "scene": "Acts game 2",
+                        "asset": "d2",
+                        "events": "Player clicks option d",
+                        "task": "success",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:10"
+                    },
+                    {
+                        "time": "2023-07-18 11:09:42",
+                        "stress_level": "1",
+                        "scene": "Acts game 2",
+                        "asset": "b2",
+                        "events": "Player clicks option b",
+                        "task": "success",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:00:11"
+                    },
+                    {
+                        "time": "2023-07-18 11:09:42",
+                        "stress_level": "1",
+                        "scene": "Acts game 2",
+                        "asset": "a2",
+                        "events": "Player clicks option a",
+                        "task": "success",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:11"
+                    },
+                    {
+                        "time": "2023-07-18 11:09:43",
+                        "stress_level": "1",
+                        "scene": "Acts game 2",
+                        "asset": "c2",
+                        "events": "Player clicks option c",
+                        "task": "failed",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:12"
+                    },
+                    {
+                        "time": "2023-07-18 11:09:44",
+                        "stress_level": "1",
+                        "scene": "Acts game 2",
+                        "asset": "Button next2",
+                        "events": "Player is in acts game scene 3",
+                        "task": "",
+                        "time_spent": "00:00:03",
+                        "time_accumulation": "00:00:13"
+                    }
+                ],
+                "avg_stress": 1
+            },
+            {
+                "scene": "Acts game 3",
+                "total_time_in_scene": "00:00:01",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:09:47",
+                        "stress_level": "1",
+                        "scene": "Acts game 3",
+                        "asset": "Button back2",
+                        "events": "Player is in acts game scene 2",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:16"
+                    }
+                ],
+                "avg_stress": 1
+            },
+            {
+                "scene": "Acts",
+                "total_time_in_scene": "00:00:25",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:09:48",
+                        "stress_level": "1",
+                        "scene": "Acts",
+                        "asset": "Button_kembali",
+                        "events": "Player goes to main menu",
+                        "task": "",
+                        "time_spent": "00:00:25",
+                        "time_accumulation": "00:00:17"
+                    }
+                ],
+                "avg_stress": 1
+            },
+            {
+                "scene": "Shapes Scene",
+                "total_time_in_scene": "00:00:06",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:10:14",
+                        "stress_level": "1",
+                        "scene": "Shapes Scene",
+                        "asset": "Button_memasangkan bentuk",
+                        "events": "Player goes to match shapes game 1",
+                        "task": "",
+                        "time_spent": "00:00:02",
+                        "time_accumulation": "00:00:43"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:49",
+                        "stress_level": "1",
+                        "scene": "Shapes Scene",
+                        "asset": "Button_lingkaran",
+                        "events": "Player clicks circle",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:18"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:50",
+                        "stress_level": "1",
+                        "scene": "Shapes Scene",
+                        "asset": "Button_segitiga",
+                        "events": "Player clicks triangle",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:01:19"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:50",
+                        "stress_level": "1",
+                        "scene": "Shapes Scene",
+                        "asset": "Button_persegi",
+                        "events": "Player clicks square",
+                        "task": "",
+                        "time_spent": "00:00:02",
+                        "time_accumulation": "00:01:19"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:52",
+                        "stress_level": "1",
+                        "scene": "Shapes Scene",
+                        "asset": "Button_kembali",
+                        "events": "Player goes to main menu",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:21"
+                    }
+                ],
+                "avg_stress": 1
+            },
+            {
+                "scene": "Matching Shape game 1",
+                "total_time_in_scene": "00:00:09",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:10:16",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 1",
+                        "asset": "tas",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:00:45"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:16",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 1",
+                        "asset": "tas",
+                        "events": "Player is dropping asset",
+                        "task": "failed",
+                        "time_spent": "00:00:03",
+                        "time_accumulation": "00:00:45"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:19",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 1",
+                        "asset": "jam",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:00:48"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:19",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 1",
+                        "asset": "jam",
+                        "events": "Player is dropping asset",
+                        "task": "failed",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:48"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:20",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 1",
+                        "asset": "tas",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:49"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:21",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 1",
+                        "asset": "tas",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:00:50"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:21",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 1",
+                        "asset": "tas",
+                        "events": "Player is dropping asset",
+                        "task": "failed",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:50"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:22",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 1",
+                        "asset": "Button next1",
+                        "events": "Player goes to matching shapes game 2",
+                        "task": "",
+                        "time_spent": "00:00:03",
+                        "time_accumulation": "00:00:51"
+                    }
+                ],
+                "avg_stress": 1
+            },
+            {
+                "scene": "Matching Shape game 2",
+                "total_time_in_scene": "00:00:17",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:10:25",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 2",
+                        "asset": "roda",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:54"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:26",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 2",
+                        "asset": "roda",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:00:55"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:26",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 2",
+                        "asset": "roda",
+                        "events": "Player is dropping asset",
+                        "task": "failed",
+                        "time_spent": "00:00:04",
+                        "time_accumulation": "00:00:55"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:30",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 2",
+                        "asset": "buku",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:59"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:31",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 2",
+                        "asset": "buku",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:01:00"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:31",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 2",
+                        "asset": "buku",
+                        "events": "Player is dropping asset",
+                        "task": "success",
+                        "time_spent": "00:00:03",
+                        "time_accumulation": "00:01:00"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:34",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 2",
+                        "asset": "roda",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:03"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:35",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 2",
+                        "asset": "roda",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:01:04"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:35",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 2",
+                        "asset": "roda",
+                        "events": "Player is dropping asset",
+                        "task": "success",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:04"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:36",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 2",
+                        "asset": "Button next2",
+                        "events": "Player goes to matching shapes game 3",
+                        "task": "",
+                        "time_spent": "00:00:06",
+                        "time_accumulation": "00:01:05"
+                    }
+                ],
+                "avg_stress": 1
+            },
+            {
+                "scene": "Matching Shape game 3",
+                "total_time_in_scene": "00:00:02",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:10:42",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 3",
+                        "asset": "kulkas",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:01:11"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:42",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 3",
+                        "asset": "kulkas",
+                        "events": "Player is dropping asset",
+                        "task": "failed",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:11"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:43",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 3",
+                        "asset": "Button next3",
+                        "events": "Player goes to matching shapes game 4",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:12"
+                    }
+                ],
+                "avg_stress": 1
+            },
+            {
+                "scene": "Matching Shape game 4",
+                "total_time_in_scene": "00:00:01",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:10:44",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 4",
+                        "asset": "Button next4",
+                        "events": "Player goes to matching shapes game 5",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:13"
+                    }
+                ],
+                "avg_stress": 1
+            },
+            {
+                "scene": "Matching Shape game 5",
+                "total_time_in_scene": "00:00:04",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:10:45",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 5",
+                        "asset": "kotak",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:14"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:46",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 5",
+                        "asset": "kotak",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:01:15"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:46",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 5",
+                        "asset": "kotak",
+                        "events": "Player is dropping asset",
+                        "task": "failed",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:15"
+                    },
+                    {
+                        "time": "2023-07-18 11:10:47",
+                        "stress_level": "1",
+                        "scene": "Matching Shape game 5",
+                        "asset": "Button_kembali",
+                        "events": "Player goes to study shapes menu",
+                        "task": "",
+                        "time_spent": "00:00:02",
+                        "time_accumulation": "00:01:16"
+                    }
+                ],
+                "avg_stress": 1
+            },
+            {
+                "scene": "Closing Scene",
+                "total_time_in_scene": "00:00:00",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:10:54",
+                        "stress_level": "1",
+                        "scene": "Closing Scene",
+                        "asset": "exit button",
+                        "events": "Game ends",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:01:23"
+                    }
+                ],
+                "avg_stress": 0
+            }
+        ]
+    },
+    {
+        "Marc/2023-07-18": [
+            {
+                "scene": "Opening Scene",
+                "total_time_in_scene": "00:00:07",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:01:37",
+                        "stress_level": "1",
+                        "scene": "Opening Scene",
+                        "asset": "Button_mulai",
+                        "events": "Player goes to main menu",
+                        "task": "",
+                        "time_spent": "00:00:07",
+                        "time_accumulation": "00:00:00"
+                    }
+                ],
+                "avg_stress": 1
+            },
+            {
+                "scene": "Main Scene",
+                "total_time_in_scene": "00:00:17",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:01:44",
+                        "stress_level": "1",
+                        "scene": "Main Scene",
+                        "asset": "Button_coloring",
+                        "events": "Player goes to coloring scene",
+                        "task": "",
+                        "time_spent": "00:00:02",
+                        "time_accumulation": "00:00:07"
+                    },
+                    {
+                        "time": "2023-07-18 11:01:52",
+                        "stress_level": "5",
+                        "scene": "Main Scene",
+                        "asset": "Button_shapes",
+                        "events": "Player goes to study shape menu",
+                        "task": "",
+                        "time_spent": "00:00:13",
+                        "time_accumulation": "00:00:15"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:53",
+                        "stress_level": "5",
+                        "scene": "Main Scene",
+                        "asset": "Button_acts",
+                        "events": "Player goes to acts scene",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:16"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:57",
+                        "stress_level": "5",
+                        "scene": "Main Scene",
+                        "asset": "Button_shapes",
+                        "events": "Player goes to study shape menu",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:20"
+                    }
+                ],
+                "avg_stress": 4
+            },
+            {
+                "scene": "Coloring",
+                "total_time_in_scene": "00:00:06",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:01:46",
+                        "stress_level": "5",
+                        "scene": "Coloring",
+                        "asset": "kuning",
+                        "events": "Player clicks yellow color",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:09"
+                    },
+                    {
+                        "time": "2023-07-18 11:01:47",
+                        "stress_level": "5",
+                        "scene": "Coloring",
+                        "asset": "ButtonBroShirt",
+                        "events": "player is coloring brother's shirt",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:10"
+                    },
+                    {
+                        "time": "2023-07-18 11:01:48",
+                        "stress_level": "5",
+                        "scene": "Coloring",
+                        "asset": "biru",
+                        "events": "Player clicks blue color",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:11"
+                    },
+                    {
+                        "time": "2023-07-18 11:01:49",
+                        "stress_level": "5",
+                        "scene": "Coloring",
+                        "asset": "ButtonDadShirt",
+                        "events": "player is coloring father's shirt",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:00:12"
+                    },
+                    {
+                        "time": "2023-07-18 11:01:49",
+                        "stress_level": "5",
+                        "scene": "Coloring",
+                        "asset": "hijau",
+                        "events": "Player clicks green color",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:12"
+                    },
+                    {
+                        "time": "2023-07-18 11:01:50",
+                        "stress_level": "5",
+                        "scene": "Coloring",
+                        "asset": "ButtonMomDress",
+                        "events": "player is coloring mother's dress",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:13"
+                    },
+                    {
+                        "time": "2023-07-18 11:01:51",
+                        "stress_level": "5",
+                        "scene": "Coloring",
+                        "asset": "Button_kembali",
+                        "events": "Player goes to main menu",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:14"
+                    }
+                ],
+                "avg_stress": 5
+            },
+            {
+                "scene": "Shapes Scene",
+                "total_time_in_scene": "00:00:08",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:02:05",
+                        "stress_level": "5",
+                        "scene": "Shapes Scene",
+                        "asset": "Button_persegi panjang",
+                        "events": "Player clicks rectangle ",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:28"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:06",
+                        "stress_level": "5",
+                        "scene": "Shapes Scene",
+                        "asset": "Button_lingkaran",
+                        "events": "Player clicks circle",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:29"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:07",
+                        "stress_level": "5",
+                        "scene": "Shapes Scene",
+                        "asset": "Button_memasangkan bentuk",
+                        "events": "Player goes to match shapes game 1",
+                        "task": "",
+                        "time_spent": "00:00:02",
+                        "time_accumulation": "00:00:30"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:44",
+                        "stress_level": "5",
+                        "scene": "Shapes Scene",
+                        "asset": "Button_menghitung jumlah",
+                        "events": "Player goes to counting game 1",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:07"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:52",
+                        "stress_level": "5",
+                        "scene": "Shapes Scene",
+                        "asset": "Button_kembali",
+                        "events": "Player goes to main menu",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:15"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:58",
+                        "stress_level": "5",
+                        "scene": "Shapes Scene",
+                        "asset": "Button_memasangkan bentuk",
+                        "events": "Player goes to match shapes game 1",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:21"
+                    },
+                    {
+                        "time": "2023-07-18 11:03:05",
+                        "stress_level": "5",
+                        "scene": "Shapes Scene",
+                        "asset": "Button_keluar",
+                        "events": "Player goes to closing scene",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:28"
+                    }
+                ],
+                "avg_stress": 5
+            },
+            {
+                "scene": "Matching Shape game 1",
+                "total_time_in_scene": "00:00:12",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:02:09",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 1",
+                        "asset": "tas",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:32"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:10",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 1",
+                        "asset": "tas",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:00:33"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:10",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 1",
+                        "asset": "tas",
+                        "events": "Player is dropping asset",
+                        "task": "failed",
+                        "time_spent": "00:00:02",
+                        "time_accumulation": "00:00:33"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:12",
+                        "stress_level": "4",
+                        "scene": "Matching Shape game 1",
+                        "asset": "jam",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:35"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:13",
+                        "stress_level": "4",
+                        "scene": "Matching Shape game 1",
+                        "asset": "jam",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:36"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:14",
+                        "stress_level": "4",
+                        "scene": "Matching Shape game 1",
+                        "asset": "jam",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:00:37"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:14",
+                        "stress_level": "4",
+                        "scene": "Matching Shape game 1",
+                        "asset": "jam",
+                        "events": "Player is dropping asset",
+                        "task": "success",
+                        "time_spent": "00:00:02",
+                        "time_accumulation": "00:00:37"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:16",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 1",
+                        "asset": "Button next1",
+                        "events": "Player goes to matching shapes game 2",
+                        "task": "",
+                        "time_spent": "00:00:05",
+                        "time_accumulation": "00:00:39"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:59",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 1",
+                        "asset": "Button next1",
+                        "events": "Player goes to matching shapes game 2",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:01:22"
+                    }
+                ],
+                "avg_stress": 4
+            },
+            {
+                "scene": "Matching Shape game 2",
+                "total_time_in_scene": "00:00:08",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:02:21",
+                        "stress_level": "4",
+                        "scene": "Matching Shape game 2",
+                        "asset": "roda",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:44"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:22",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 2",
+                        "asset": "roda",
+                        "events": "Player is dropping asset",
+                        "task": "failed",
+                        "time_spent": "00:00:05",
+                        "time_accumulation": "00:00:45"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:27",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 2",
+                        "asset": "Button next2",
+                        "events": "Player goes to matching shapes game 3",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:50"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:59",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 2",
+                        "asset": "Button next2",
+                        "events": "Player goes to matching shapes game 3",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:22"
+                    }
+                ],
+                "avg_stress": 4
+            },
+            {
+                "scene": "Matching Shape game 3",
+                "total_time_in_scene": "00:00:13",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:02:28",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 3",
+                        "asset": "donat",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:51"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:29",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 3",
+                        "asset": "donat",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:00:52"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:29",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 3",
+                        "asset": "donat",
+                        "events": "Player is dropping asset",
+                        "task": "failed",
+                        "time_spent": "00:00:08",
+                        "time_accumulation": "00:00:52"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:37",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 3",
+                        "asset": "pgaris",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:00"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:38",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 3",
+                        "asset": "pgaris",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:01:01"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:38",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 3",
+                        "asset": "pgaris",
+                        "events": "Player is dropping asset",
+                        "task": "failed",
+                        "time_spent": "00:00:02",
+                        "time_accumulation": "00:01:01"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:40",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 3",
+                        "asset": "Button next3",
+                        "events": "Player goes to matching shapes game 4",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:03"
+                    },
+                    {
+                        "time": "2023-07-18 11:03:00",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 3",
+                        "asset": "Button next3",
+                        "events": "Player goes to matching shapes game 4",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:01:23"
+                    }
+                ],
+                "avg_stress": 5
+            },
+            {
+                "scene": "Matching Shape game 4",
+                "total_time_in_scene": "00:00:04",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:02:41",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 4",
+                        "asset": "cangkir",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:01:04"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:41",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 4",
+                        "asset": "cangkir",
+                        "events": "Player is dropping asset",
+                        "task": "failed",
+                        "time_spent": "00:00:02",
+                        "time_accumulation": "00:01:04"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:43",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 4",
+                        "asset": "Button_kembali",
+                        "events": "Player goes to study shapes menu",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:06"
+                    },
+                    {
+                        "time": "2023-07-18 11:03:00",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 4",
+                        "asset": "Button next4",
+                        "events": "Player goes to matching shapes game 5",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:23"
+                    }
+                ],
+                "avg_stress": 5
+            },
+            {
+                "scene": "Calculation game 1",
+                "total_time_in_scene": "00:00:06",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:02:45",
+                        "stress_level": "5",
+                        "scene": "Calculation game 1",
+                        "asset": "2",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:08"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:46",
+                        "stress_level": "5",
+                        "scene": "Calculation game 1",
+                        "asset": "2",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:01:09"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:46",
+                        "stress_level": "5",
+                        "scene": "Calculation game 1",
+                        "asset": "2",
+                        "events": "Player is dropping asset",
+                        "task": "failed",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:09"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:47",
+                        "stress_level": "5",
+                        "scene": "Calculation game 1",
+                        "asset": "2",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:10"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:48",
+                        "stress_level": "5",
+                        "scene": "Calculation game 1",
+                        "asset": "2",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:01:11"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:48",
+                        "stress_level": "5",
+                        "scene": "Calculation game 1",
+                        "asset": "2",
+                        "events": "Player is dropping asset",
+                        "task": "success",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:11"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:49",
+                        "stress_level": "5",
+                        "scene": "Calculation game 1",
+                        "asset": "Button next1",
+                        "events": "Player goes to counting game 2",
+                        "task": "",
+                        "time_spent": "00:00:02",
+                        "time_accumulation": "00:01:12"
+                    }
+                ],
+                "avg_stress": 5
+            },
+            {
+                "scene": "Calculation game 2",
+                "total_time_in_scene": "00:00:01",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:02:51",
+                        "stress_level": "5",
+                        "scene": "Calculation game 2",
+                        "asset": "Button_kembali",
+                        "events": "Player goes to study shape menu",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:14"
+                    }
+                ],
+                "avg_stress": 5
+            },
+            {
+                "scene": "Acts game 1",
+                "total_time_in_scene": "00:00:02",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:02:54",
+                        "stress_level": "5",
+                        "scene": "Acts game 1",
+                        "asset": "a1",
+                        "events": "Player clicks option a",
+                        "task": "success",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:01:17"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:54",
+                        "stress_level": "5",
+                        "scene": "Acts game 1",
+                        "asset": "b1",
+                        "events": "Player clicks option b",
+                        "task": "failed",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:01:17"
+                    },
+                    {
+                        "time": "2023-07-18 11:02:54",
+                        "stress_level": "5",
+                        "scene": "Acts game 1",
+                        "asset": "d1",
+                        "events": "Player clicks option d",
+                        "task": "success",
+                        "time_spent": "00:00:02",
+                        "time_accumulation": "00:01:17"
+                    }
+                ],
+                "avg_stress": 5
+            },
+            {
+                "scene": "Acts",
+                "total_time_in_scene": "00:00:01",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:02:56",
+                        "stress_level": "5",
+                        "scene": "Acts",
+                        "asset": "Button_kembali",
+                        "events": "Player goes to main menu",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:19"
+                    }
+                ],
+                "avg_stress": 5
+            },
+            {
+                "scene": "Matching Shape game 5",
+                "total_time_in_scene": "00:00:04",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:03:01",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 5",
+                        "asset": "kotak",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:24"
+                    },
+                    {
+                        "time": "2023-07-18 11:03:02",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 5",
+                        "asset": "kotak",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:01:25"
+                    },
+                    {
+                        "time": "2023-07-18 11:03:02",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 5",
+                        "asset": "kotak",
+                        "events": "Player is dropping asset",
+                        "task": "failed",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:01:25"
+                    },
+                    {
+                        "time": "2023-07-18 11:03:02",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 5",
+                        "asset": "ppanjang",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:25"
+                    },
+                    {
+                        "time": "2023-07-18 11:03:03",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 5",
+                        "asset": "ppanjang",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:01:26"
+                    },
+                    {
+                        "time": "2023-07-18 11:03:03",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 5",
+                        "asset": "ppanjang",
+                        "events": "Player is dropping asset",
+                        "task": "success",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:26"
+                    },
+                    {
+                        "time": "2023-07-18 11:03:04",
+                        "stress_level": "5",
+                        "scene": "Matching Shape game 5",
+                        "asset": "Button_kembali",
+                        "events": "Player goes to study shapes menu",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:01:27"
+                    }
+                ],
+                "avg_stress": 5
+            },
+            {
+                "scene": "Closing Scene",
+                "total_time_in_scene": "00:00:00",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:03:06",
+                        "stress_level": "5",
+                        "scene": "Closing Scene",
+                        "asset": "exit button",
+                        "events": "Game ends",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:01:29"
+                    }
+                ],
+                "avg_stress": 0
+            }
+        ]
+    },
+    {
+        "faranak/2023-07-18": [
+            {
+                "scene": "Opening Scene",
+                "total_time_in_scene": "00:00:01",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:19:53",
+                        "stress_level": "1",
+                        "scene": "Opening Scene",
+                        "asset": "Button_mulai",
+                        "events": "Player goes to main menu",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:00"
+                    }
+                ],
+                "avg_stress": 1
+            },
+            {
+                "scene": "Main Scene",
+                "total_time_in_scene": "00:00:04",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:19:54",
+                        "stress_level": "1",
+                        "scene": "Main Scene",
+                        "asset": "Button_shapes",
+                        "events": "Player goes to study shape menu",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:01"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:15",
+                        "stress_level": "4",
+                        "scene": "Main Scene",
+                        "asset": "Button_acts",
+                        "events": "Player goes to acts scene",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:22"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:23",
+                        "stress_level": "5",
+                        "scene": "Main Scene",
+                        "asset": "Button_coloring",
+                        "events": "Player goes to coloring scene",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:30"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:29",
+                        "stress_level": "4",
+                        "scene": "Main Scene",
+                        "asset": "Button_keluar",
+                        "events": "Player goes to closing scene",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:36"
+                    }
+                ],
+                "avg_stress": 3
+            },
+            {
+                "scene": "Shapes Scene",
+                "total_time_in_scene": "00:00:06",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:19:55",
+                        "stress_level": "1",
+                        "scene": "Shapes Scene",
+                        "asset": "Button_persegi panjang",
+                        "events": "Player clicks rectangle ",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:02"
+                    },
+                    {
+                        "time": "2023-07-18 11:19:56",
+                        "stress_level": "1",
+                        "scene": "Shapes Scene",
+                        "asset": "Button_lingkaran",
+                        "events": "Player clicks circle",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:03"
+                    },
+                    {
+                        "time": "2023-07-18 11:19:57",
+                        "stress_level": "1",
+                        "scene": "Shapes Scene",
+                        "asset": "Button_persegi",
+                        "events": "Player clicks square",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:00:04"
+                    },
+                    {
+                        "time": "2023-07-18 11:19:57",
+                        "stress_level": "1",
+                        "scene": "Shapes Scene",
+                        "asset": "Button_segitiga",
+                        "events": "Player clicks triangle",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:04"
+                    },
+                    {
+                        "time": "2023-07-18 11:19:58",
+                        "stress_level": "1",
+                        "scene": "Shapes Scene",
+                        "asset": "Button_menghitung jumlah",
+                        "events": "Player goes to counting game 1",
+                        "task": "",
+                        "time_spent": "00:00:02",
+                        "time_accumulation": "00:00:05"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:14",
+                        "stress_level": "5",
+                        "scene": "Shapes Scene",
+                        "asset": "Button_kembali",
+                        "events": "Player goes to main menu",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:21"
+                    }
+                ],
+                "avg_stress": 1
+            },
+            {
+                "scene": "Calculation game 1",
+                "total_time_in_scene": "00:00:05",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:20:00",
+                        "stress_level": "1",
+                        "scene": "Calculation game 1",
+                        "asset": "6",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:07"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:01",
+                        "stress_level": "1",
+                        "scene": "Calculation game 1",
+                        "asset": "6",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:08"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:02",
+                        "stress_level": "1",
+                        "scene": "Calculation game 1",
+                        "asset": "6",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:00:09"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:02",
+                        "stress_level": "1",
+                        "scene": "Calculation game 1",
+                        "asset": "6",
+                        "events": "Player is dropping asset",
+                        "task": "success",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:09"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:03",
+                        "stress_level": "1",
+                        "scene": "Calculation game 1",
+                        "asset": "Button next1",
+                        "events": "Player goes to counting game 2",
+                        "task": "",
+                        "time_spent": "00:00:02",
+                        "time_accumulation": "00:00:10"
+                    }
+                ],
+                "avg_stress": 1
+            },
+            {
+                "scene": "Calculation game 2",
+                "total_time_in_scene": "00:00:01",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:20:05",
+                        "stress_level": "2",
+                        "scene": "Calculation game 2",
+                        "asset": "Button next2",
+                        "events": "Player goes to counting game 3",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:12"
+                    }
+                ],
+                "avg_stress": 2
+            },
+            {
+                "scene": "Calculation game 3",
+                "total_time_in_scene": "00:00:08",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:20:06",
+                        "stress_level": "3",
+                        "scene": "Calculation game 3",
+                        "asset": "5",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:13"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:07",
+                        "stress_level": "4",
+                        "scene": "Calculation game 3",
+                        "asset": "5",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:00:14"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:07",
+                        "stress_level": "4",
+                        "scene": "Calculation game 3",
+                        "asset": "5",
+                        "events": "Player is dropping asset",
+                        "task": "failed",
+                        "time_spent": "00:00:02",
+                        "time_accumulation": "00:00:14"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:09",
+                        "stress_level": "4",
+                        "scene": "Calculation game 3",
+                        "asset": "10",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:16"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:10",
+                        "stress_level": "3",
+                        "scene": "Calculation game 3",
+                        "asset": "10",
+                        "events": "Player is dragging asset",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:00:17"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:10",
+                        "stress_level": "3",
+                        "scene": "Calculation game 3",
+                        "asset": "10",
+                        "events": "Player is dropping asset",
+                        "task": "success",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:17"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:11",
+                        "stress_level": "3",
+                        "scene": "Calculation game 3",
+                        "asset": "Button_kembali",
+                        "events": "Player goes to study shape menu",
+                        "task": "",
+                        "time_spent": "00:00:03",
+                        "time_accumulation": "00:00:18"
+                    }
+                ],
+                "avg_stress": 3
+            },
+            {
+                "scene": "Acts game 1",
+                "total_time_in_scene": "00:00:03",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:20:16",
+                        "stress_level": "5",
+                        "scene": "Acts game 1",
+                        "asset": "a1",
+                        "events": "Player clicks option a",
+                        "task": "success",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:00:23"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:16",
+                        "stress_level": "5",
+                        "scene": "Acts game 1",
+                        "asset": "b1",
+                        "events": "Player clicks option b",
+                        "task": "failed",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:23"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:17",
+                        "stress_level": "5",
+                        "scene": "Acts game 1",
+                        "asset": "d1",
+                        "events": "Player clicks option d",
+                        "task": "success",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:00:24"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:17",
+                        "stress_level": "5",
+                        "scene": "Acts game 1",
+                        "asset": "c1",
+                        "events": "Player clicks option c",
+                        "task": "failed",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:24"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:18",
+                        "stress_level": "5",
+                        "scene": "Acts game 1",
+                        "asset": "Button next1",
+                        "events": "Player is in acts game scene 2",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:25"
+                    }
+                ],
+                "avg_stress": 5
+            },
+            {
+                "scene": "Acts game 2",
+                "total_time_in_scene": "00:00:00",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:20:19",
+                        "stress_level": "5",
+                        "scene": "Acts game 2",
+                        "asset": "Button next2",
+                        "events": "Player is in acts game scene 3",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:00:26"
+                    }
+                ],
+                "avg_stress": 0
+            },
+            {
+                "scene": "Acts game 3",
+                "total_time_in_scene": "00:00:03",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:20:19",
+                        "stress_level": "5",
+                        "scene": "Acts game 3",
+                        "asset": "d3",
+                        "events": "Player clicks option d",
+                        "task": "success",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:26"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:20",
+                        "stress_level": "5",
+                        "scene": "Acts game 3",
+                        "asset": "b3",
+                        "events": "Player clicks option b",
+                        "task": "success",
+                        "time_spent": "00:00:02",
+                        "time_accumulation": "00:00:27"
+                    }
+                ],
+                "avg_stress": 5
+            },
+            {
+                "scene": "Acts",
+                "total_time_in_scene": "00:00:01",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:20:22",
+                        "stress_level": "5",
+                        "scene": "Acts",
+                        "asset": "Button_kembali",
+                        "events": "Player goes to main menu",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:29"
+                    }
+                ],
+                "avg_stress": 5
+            },
+            {
+                "scene": "Coloring",
+                "total_time_in_scene": "00:00:05",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:20:24",
+                        "stress_level": "5",
+                        "scene": "Coloring",
+                        "asset": "kuning",
+                        "events": "Player clicks yellow color",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:00:31"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:24",
+                        "stress_level": "5",
+                        "scene": "Coloring",
+                        "asset": "ButtonBroShirt",
+                        "events": "player is coloring brother's shirt",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:31"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:25",
+                        "stress_level": "5",
+                        "scene": "Coloring",
+                        "asset": "biru",
+                        "events": "Player clicks blue color",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:32"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:26",
+                        "stress_level": "5",
+                        "scene": "Coloring",
+                        "asset": "ButtonDadShirt",
+                        "events": "player is coloring father's shirt",
+                        "task": "",
+                        "time_spent": "00:00:01",
+                        "time_accumulation": "00:00:33"
+                    },
+                    {
+                        "time": "2023-07-18 11:20:27",
+                        "stress_level": "5",
+                        "scene": "Coloring",
+                        "asset": "Button_kembali",
+                        "events": "Player goes to main menu",
+                        "task": "",
+                        "time_spent": "00:00:02",
+                        "time_accumulation": "00:00:34"
+                    }
+                ],
+                "avg_stress": 5
+            },
+            {
+                "scene": "Closing Scene",
+                "total_time_in_scene": "00:00:00",
+                "activities": [
+                    {
+                        "time": "2023-07-18 11:20:30",
+                        "stress_level": "4",
+                        "scene": "Closing Scene",
+                        "asset": "exit button",
+                        "events": "Game ends",
+                        "task": "",
+                        "time_spent": "00:00:00",
+                        "time_accumulation": "00:00:37"
+                    }
+                ],
+                "avg_stress": 0
+            }
+        ]
+    }
+]

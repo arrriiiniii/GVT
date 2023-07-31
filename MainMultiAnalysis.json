@@ -1,0 +1,215 @@
+[
+    {
+        "user": "Julia",
+        "date": "2023-07-18",
+        "scenes": [
+            {
+                "scene": "Opening Scene",
+                "total_time_in_scene": "00:00:02",
+                "avg_stress": 5
+            },
+            {
+                "scene": "Main Scene",
+                "total_time_in_scene": "00:00:04",
+                "avg_stress": 3
+            },
+            {
+                "scene": "Acts game 1",
+                "total_time_in_scene": "00:00:06",
+                "avg_stress": 1
+            },
+            {
+                "scene": "Acts game 2",
+                "total_time_in_scene": "00:00:06",
+                "avg_stress": 1
+            },
+            {
+                "scene": "Acts game 3",
+                "total_time_in_scene": "00:00:01",
+                "avg_stress": 1
+            },
+            {
+                "scene": "Acts",
+                "total_time_in_scene": "00:00:25",
+                "avg_stress": 1
+            },
+            {
+                "scene": "Shapes Scene",
+                "total_time_in_scene": "00:00:06",
+                "avg_stress": 1
+            },
+            {
+                "scene": "Matching Shape game 1",
+                "total_time_in_scene": "00:00:09",
+                "avg_stress": 1
+            },
+            {
+                "scene": "Matching Shape game 2",
+                "total_time_in_scene": "00:00:17",
+                "avg_stress": 1
+            },
+            {
+                "scene": "Matching Shape game 3",
+                "total_time_in_scene": "00:00:02",
+                "avg_stress": 1
+            },
+            {
+                "scene": "Matching Shape game 4",
+                "total_time_in_scene": "00:00:01",
+                "avg_stress": 1
+            },
+            {
+                "scene": "Matching Shape game 5",
+                "total_time_in_scene": "00:00:04",
+                "avg_stress": 1
+            },
+            {
+                "scene": "Closing Scene",
+                "total_time_in_scene": "00:00:00",
+                "avg_stress": 0
+            }
+        ]
+    },
+    {
+        "user": "Marc",
+        "date": "2023-07-18",
+        "scenes": [
+            {
+                "scene": "Opening Scene",
+                "total_time_in_scene": "00:00:07",
+                "avg_stress": 1
+            },
+            {
+                "scene": "Main Scene",
+                "total_time_in_scene": "00:00:17",
+                "avg_stress": 4
+            },
+            {
+                "scene": "Coloring",
+                "total_time_in_scene": "00:00:06",
+                "avg_stress": 5
+            },
+            {
+                "scene": "Shapes Scene",
+                "total_time_in_scene": "00:00:08",
+                "avg_stress": 5
+            },
+            {
+                "scene": "Matching Shape game 1",
+                "total_time_in_scene": "00:00:12",
+                "avg_stress": 4
+            },
+            {
+                "scene": "Matching Shape game 2",
+                "total_time_in_scene": "00:00:08",
+                "avg_stress": 4
+            },
+            {
+                "scene": "Matching Shape game 3",
+                "total_time_in_scene": "00:00:13",
+                "avg_stress": 5
+            },
+            {
+                "scene": "Matching Shape game 4",
+                "total_time_in_scene": "00:00:04",
+                "avg_stress": 5
+            },
+            {
+                "scene": "Calculation game 1",
+                "total_time_in_scene": "00:00:06",
+                "avg_stress": 5
+            },
+            {
+                "scene": "Calculation game 2",
+                "total_time_in_scene": "00:00:01",
+                "avg_stress": 5
+            },
+            {
+                "scene": "Acts game 1",
+                "total_time_in_scene": "00:00:02",
+                "avg_stress": 5
+            },
+            {
+                "scene": "Acts",
+                "total_time_in_scene": "00:00:01",
+                "avg_stress": 5
+            },
+            {
+                "scene": "Matching Shape game 5",
+                "total_time_in_scene": "00:00:04",
+                "avg_stress": 5
+            },
+            {
+                "scene": "Closing Scene",
+                "total_time_in_scene": "00:00:00",
+                "avg_stress": 0
+            }
+        ]
+    },
+    {
+        "user": "faranak",
+        "date": "2023-07-18",
+        "scenes": [
+            {
+                "scene": "Opening Scene",
+                "total_time_in_scene": "00:00:01",
+                "avg_stress": 1
+            },
+            {
+                "scene": "Main Scene",
+                "total_time_in_scene": "00:00:04",
+                "avg_stress": 3
+            },
+            {
+                "scene": "Shapes Scene",
+                "total_time_in_scene": "00:00:06",
+                "avg_stress": 1
+            },
+            {
+                "scene": "Calculation game 1",
+                "total_time_in_scene": "00:00:05",
+                "avg_stress": 1
+            },
+            {
+                "scene": "Calculation game 2",
+                "total_time_in_scene": "00:00:01",
+                "avg_stress": 2
+            },
+            {
+                "scene": "Calculation game 3",
+                "total_time_in_scene": "00:00:08",
+                "avg_stress": 3
+            },
+            {
+                "scene": "Acts game 1",
+                "total_time_in_scene": "00:00:03",
+                "avg_stress": 5
+            },
+            {
+                "scene": "Acts game 2",
+                "total_time_in_scene": "00:00:00",
+                "avg_stress": 0
+            },
+            {
+                "scene": "Acts game 3",
+                "total_time_in_scene": "00:00:03",
+                "avg_stress": 5
+            },
+            {
+                "scene": "Acts",
+                "total_time_in_scene": "00:00:01",
+                "avg_stress": 5
+            },
+            {
+                "scene": "Coloring",
+                "total_time_in_scene": "00:00:05",
+                "avg_stress": 5
+            },
+            {
+                "scene": "Closing Scene",
+                "total_time_in_scene": "00:00:00",
+                "avg_stress": 0
+            }
+        ]
+    }
+]

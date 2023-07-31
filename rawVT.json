@@ -1,0 +1,314 @@
+[
+    {
+        "asset": "Button_mulai",
+        "events": "Player goes to main menu",
+        "scene": "Opening Scene",
+        "stress_level": "1",
+        "task": "",
+        "time": "2023-07-18 11:19:53"
+    },
+    {
+        "asset": "Button_shapes",
+        "events": "Player goes to study shape menu",
+        "scene": "Main Scene",
+        "stress_level": "1",
+        "task": "",
+        "time": "2023-07-18 11:19:54"
+    },
+    {
+        "asset": "Button_persegi panjang",
+        "events": "Player clicks rectangle ",
+        "scene": "Shapes Scene",
+        "stress_level": "1",
+        "task": "",
+        "time": "2023-07-18 11:19:55"
+    },
+    {
+        "asset": "Button_lingkaran",
+        "events": "Player clicks circle",
+        "scene": "Shapes Scene",
+        "stress_level": "1",
+        "task": "",
+        "time": "2023-07-18 11:19:56"
+    },
+    {
+        "asset": "Button_persegi",
+        "events": "Player clicks square",
+        "scene": "Shapes Scene",
+        "stress_level": "1",
+        "task": "",
+        "time": "2023-07-18 11:19:57"
+    },
+    {
+        "asset": "Button_segitiga",
+        "events": "Player clicks triangle",
+        "scene": "Shapes Scene",
+        "stress_level": "1",
+        "task": "",
+        "time": "2023-07-18 11:19:57"
+    },
+    {
+        "asset": "Button_menghitung jumlah",
+        "events": "Player goes to counting game 1",
+        "scene": "Shapes Scene",
+        "stress_level": "1",
+        "task": "",
+        "time": "2023-07-18 11:19:58"
+    },
+    {
+        "asset": "6",
+        "events": "Player is dragging asset",
+        "scene": "Calculation game 1",
+        "stress_level": "1",
+        "task": "",
+        "time": "2023-07-18 11:20:00"
+    },
+    {
+        "asset": "6",
+        "events": "Player is dragging asset",
+        "scene": "Calculation game 1",
+        "stress_level": "1",
+        "task": "",
+        "time": "2023-07-18 11:20:01"
+    },
+    {
+        "asset": "6",
+        "events": "Player is dragging asset",
+        "scene": "Calculation game 1",
+        "stress_level": "1",
+        "task": "",
+        "time": "2023-07-18 11:20:02"
+    },
+    {
+        "asset": "6",
+        "events": "Player is dropping asset",
+        "scene": "Calculation game 1",
+        "stress_level": "1",
+        "task": "success",
+        "time": "2023-07-18 11:20:02"
+    },
+    {
+        "asset": "Button next1",
+        "events": "Player goes to counting game 2",
+        "scene": "Calculation game 1",
+        "stress_level": "1",
+        "task": "",
+        "time": "2023-07-18 11:20:03"
+    },
+    {
+        "asset": "Button next2",
+        "events": "Player goes to counting game 3",
+        "scene": "Calculation game 2",
+        "stress_level": "2",
+        "task": "",
+        "time": "2023-07-18 11:20:05"
+    },
+    {
+        "asset": "5",
+        "events": "Player is dragging asset",
+        "scene": "Calculation game 3",
+        "stress_level": "3",
+        "task": "",
+        "time": "2023-07-18 11:20:06"
+    },
+    {
+        "asset": "5",
+        "events": "Player is dragging asset",
+        "scene": "Calculation game 3",
+        "stress_level": "4",
+        "task": "",
+        "time": "2023-07-18 11:20:07"
+    },
+    {
+        "asset": "5",
+        "events": "Player is dropping asset",
+        "scene": "Calculation game 3",
+        "stress_level": "4",
+        "task": "failed",
+        "time": "2023-07-18 11:20:07"
+    },
+    {
+        "asset": "10",
+        "events": "Player is dragging asset",
+        "scene": "Calculation game 3",
+        "stress_level": "4",
+        "task": "",
+        "time": "2023-07-18 11:20:09"
+    },
+    {
+        "asset": "10",
+        "events": "Player is dragging asset",
+        "scene": "Calculation game 3",
+        "stress_level": "3",
+        "task": "",
+        "time": "2023-07-18 11:20:10"
+    },
+    {
+        "asset": "10",
+        "events": "Player is dropping asset",
+        "scene": "Calculation game 3",
+        "stress_level": "3",
+        "task": "success",
+        "time": "2023-07-18 11:20:10"
+    },
+    {
+        "asset": "Button_kembali",
+        "events": "Player goes to study shape menu",
+        "scene": "Calculation game 3",
+        "stress_level": "3",
+        "task": "",
+        "time": "2023-07-18 11:20:11"
+    },
+    {
+        "asset": "Button_kembali",
+        "events": "Player goes to main menu",
+        "scene": "Shapes Scene",
+        "stress_level": "5",
+        "task": "",
+        "time": "2023-07-18 11:20:14"
+    },
+    {
+        "asset": "Button_acts",
+        "events": "Player goes to acts scene",
+        "scene": "Main Scene",
+        "stress_level": "4",
+        "task": "",
+        "time": "2023-07-18 11:20:15"
+    },
+    {
+        "asset": "a1",
+        "events": "Player clicks option a",
+        "scene": "Acts game 1",
+        "stress_level": "5",
+        "task": "success",
+        "time": "2023-07-18 11:20:16"
+    },
+    {
+        "asset": "b1",
+        "events": "Player clicks option b",
+        "scene": "Acts game 1",
+        "stress_level": "5",
+        "task": "failed",
+        "time": "2023-07-18 11:20:16"
+    },
+    {
+        "asset": "d1",
+        "events": "Player clicks option d",
+        "scene": "Acts game 1",
+        "stress_level": "5",
+        "task": "success",
+        "time": "2023-07-18 11:20:17"
+    },
+    {
+        "asset": "c1",
+        "events": "Player clicks option c",
+        "scene": "Acts game 1",
+        "stress_level": "5",
+        "task": "failed",
+        "time": "2023-07-18 11:20:17"
+    },
+    {
+        "asset": "Button next1",
+        "events": "Player is in acts game scene 2",
+        "scene": "Acts game 1",
+        "stress_level": "5",
+        "task": "",
+        "time": "2023-07-18 11:20:18"
+    },
+    {
+        "asset": "Button next2",
+        "events": "Player is in acts game scene 3",
+        "scene": "Acts game 2",
+        "stress_level": "5",
+        "task": "",
+        "time": "2023-07-18 11:20:19"
+    },
+    {
+        "asset": "d3",
+        "events": "Player clicks option d",
+        "scene": "Acts game 3",
+        "stress_level": "5",
+        "task": "success",
+        "time": "2023-07-18 11:20:19"
+    },
+    {
+        "asset": "b3",
+        "events": "Player clicks option b",
+        "scene": "Acts game 3",
+        "stress_level": "5",
+        "task": "success",
+        "time": "2023-07-18 11:20:20"
+    },
+    {
+        "asset": "Button_kembali",
+        "events": "Player goes to main menu",
+        "scene": "Acts",
+        "stress_level": "5",
+        "task": "",
+        "time": "2023-07-18 11:20:22"
+    },
+    {
+        "asset": "Button_coloring",
+        "events": "Player goes to coloring scene",
+        "scene": "Main Scene",
+        "stress_level": "5",
+        "task": "",
+        "time": "2023-07-18 11:20:23"
+    },
+    {
+        "asset": "kuning",
+        "events": "Player clicks yellow color",
+        "scene": "Coloring",
+        "stress_level": "5",
+        "task": "",
+        "time": "2023-07-18 11:20:24"
+    },
+    {
+        "asset": "ButtonBroShirt",
+        "events": "player is coloring brother's shirt",
+        "scene": "Coloring",
+        "stress_level": "5",
+        "task": "",
+        "time": "2023-07-18 11:20:24"
+    },
+    {
+        "asset": "biru",
+        "events": "Player clicks blue color",
+        "scene": "Coloring",
+        "stress_level": "5",
+        "task": "",
+        "time": "2023-07-18 11:20:25"
+    },
+    {
+        "asset": "ButtonDadShirt",
+        "events": "player is coloring father's shirt",
+        "scene": "Coloring",
+        "stress_level": "5",
+        "task": "",
+        "time": "2023-07-18 11:20:26"
+    },
+    {
+        "asset": "Button_kembali",
+        "events": "Player goes to main menu",
+        "scene": "Coloring",
+        "stress_level": "5",
+        "task": "",
+        "time": "2023-07-18 11:20:27"
+    },
+    {
+        "asset": "Button_keluar",
+        "events": "Player goes to closing scene",
+        "scene": "Main Scene",
+        "stress_level": "4",
+        "task": "",
+        "time": "2023-07-18 11:20:29"
+    },
+    {
+        "asset": "exit button",
+        "events": "Game ends",
+        "scene": "Closing Scene",
+        "stress_level": "4",
+        "task": "",
+        "time": "2023-07-18 11:20:30"
+    }
+]
