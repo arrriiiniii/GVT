@@ -29,4 +29,27 @@ About the script:
 - templates folder contains html files which related to GVT web app
 
 
-- the installation  instructions  of GVT;   -  instructions about  how to use the corresponding scripts and indeed the tool ; -  data collected trough the usability evaluation
+
+The installation  instructions  of GVT:
+
+
+
+
+Data collected trough the usability evaluation:
+
+
+
+Limitation:
+- For now, GVT only works for evaluating desktop game with .app extension
+
+
+
+
+
+
+
+
+
+
+
+
