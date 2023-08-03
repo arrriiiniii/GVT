@@ -7,8 +7,16 @@ Persons behind the work:
 - Arini Nur Rohmah: Student, Developer
 - Nelly Condori Fernandez: Supervisor
 - Miguel Luaces: Tutor
+  
 
-
+Sponsor organisations:
+- Erasmus Mundus SE4GD programme
+- University of L’Aquila
+- Lappeenranta-Lahti University of Technology LUT
+- Vrije Universiteit Amsterdam
+- Universidad Santiago de Compostela
+- Universidad de la Coruña
+- Centro Singular de Investigación en Tecnoloxías Intelixentes (CiTIUS)
 
 
 
