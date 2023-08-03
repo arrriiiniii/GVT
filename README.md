@@ -30,13 +30,14 @@ About the script:
 
 
 
-The installation  instructions  of GVT:
+To run the GVT:
+
 
 
 
 
 Data collected trough the usability evaluation:
-
+- the data gained from the usability testing is saved inside "Data" folder
 
 
 Limitation:
