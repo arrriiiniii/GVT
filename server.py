@@ -3,7 +3,6 @@ import time
 from flask import Flask, render_template, make_response
 from flask import jsonify, request
 import json
-# import keyboard
 import random
 import netifaces
 from flask import Flask, request
@@ -16,6 +15,8 @@ from flask import send_file
 import os
 import collections
 from collections import OrderedDict
+import statistics
+
 # import bluetooth
 # import math
 
@@ -207,6 +208,13 @@ def analyzePerScene():
         scene["total_time_in_scene"] = f"{hours:02d}:{minutes:02d}:{seconds:02d}"
         avg_stress = scene["avg_stress"] / total_time.seconds if total_time.seconds > 0 else 0
         scene["avg_stress"] = int(avg_stress)
+        # Additional functions to calculate statistics
+        stress_levels = [activity["stress_level"] for activity in scene["activities"]]
+        scene["min_stress"] = min(stress_levels)
+        scene["max_stress"] = max(stress_levels)
+        scene["mode_stress"] = statistics.mode(stress_levels) if stress_levels else None
+        scene["quartile_stress"] = statistics.quantiles(stress_levels, n=4) if stress_levels else None
+        scene["std_stress"] = statistics.stdev(stress_levels) if len(stress_levels) >= 2 else None
     
     with open("finalVT.json", "w") as f:
         json.dump(scenes, f, indent=4)
