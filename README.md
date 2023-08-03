@@ -19,10 +19,14 @@ Sponsor organisations:
 - Centro Singular de Investigación en Tecnoloxías Intelixentes (CiTIUS)
 
 
+About the script:
+- VT0.py is a python tkinter file related to GVT desktop app
+- server.py is a python flask file related to GVT web app
+- db.py is a python file related to database
+- edDummy.py is a python file for GVT prototype which generate inactual data for imitating stress detector
+- other json files are related to data analysis result from gvt to be shown in the GVT web app
+- static folder contains static figures and css style
+- templates folder contains html files which related to GVT web app
 
 
 - the installation  instructions  of GVT;   -  instructions about  how to use the corresponding scripts and indeed the tool ; -  data collected trough the usability evaluation
-Aug 3, 2023 9:40 AM
-ncfyllen7: You could add all this information in the Readme.
-Aug 3, 2023 9:41 AM
-ncfyllen7: In the readme, You should also add  the name of the contributors
