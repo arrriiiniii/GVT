@@ -36,7 +36,7 @@ To run the GVT:
 
 
 Data collected trough the usability evaluation:
-- the data gained from the usability testing is saved inside "Data" folder
+- the data gained from the usability testing gform can be found in the .xlsx format
 
 
 Limitation:
