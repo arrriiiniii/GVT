@@ -31,8 +31,7 @@ About the script:
 
 
 To run the GVT:
-
-
+- to run the gvt, you can import all the files into code editor, and run the VT0.py
 
 
 
