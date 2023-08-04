@@ -37,6 +37,7 @@ To run the GVT:
 
 Data collected trough the usability evaluation:
 - the data gained from the usability testing gform can be found in the .xlsx format
+- you can find the full video testing documentation in this link https://drive.google.com/drive/folders/1ABPrGpZujareyE6Otlpd7naRs1cKYEu2?usp=sharing
 
 
 Limitation:
